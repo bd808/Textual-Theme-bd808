@@ -16,7 +16,9 @@
 	<key>Indentation Offset</key>
 	<integer>6</integer>
 	<key>Underlying Window Color</key>
-	<string>#FDF6E3</string>
+	<string>#FFFFFF</string>
+	<key>Scrollbar Mark Color</key>
+	<string>#D33682</string>
 	<key>Force Invert Sidebars</key>
 	<false/>
 </dict>
