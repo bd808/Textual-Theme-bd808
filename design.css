@@ -171,8 +171,8 @@ body div.line[type*=ctcp],
 body div.line[type*=notice],
 body div.line[type*=wallops] {
   background:#EEE8D5; /*base2*/
-  border-bottom:1px solid #D30102; /*red*/
-  border-top:1px solid #D30102; /*red*/
+  border-top:1px solid #B58900; /*yellow*/
+  border-bottom:1px solid #B58900; /*yellow*/
   color:#D30102; /*red*/
   padding:2px 5px 2px 5px;
   position:relative;
@@ -385,7 +385,7 @@ body div[type*=privmsg] .sender[type*=myself] {
 .sender[type*=normal][colornumber='13'], .inline_nickname[colornumber='13'],
 .sender[type*=normal][colornumber='14'], .inline_nickname[colornumber='14'],
 .sender[type*=normal][colornumber='15'], .inline_nickname[colornumber='15'] {
-  font-weight:bold;
+  /*font-weight:bold;*/
 }
 
 .sender[type*=normal][colornumber='16'], .inline_nickname[colornumber='16'],
@@ -396,7 +396,7 @@ body div[type*=privmsg] .sender[type*=myself] {
 .sender[type*=normal][colornumber='21'], .inline_nickname[colornumber='21'],
 .sender[type*=normal][colornumber='22'], .inline_nickname[colornumber='22'],
 .sender[type*=normal][colornumber='23'], .inline_nickname[colornumber='23'] {
-  font-style:italic;
+  /*font-style:italic;*/
 }
 
 .sender[type*=normal][colornumber='24'], .inline_nickname[colornumber='24'],
@@ -407,8 +407,8 @@ body div[type*=privmsg] .sender[type*=myself] {
 .sender[type*=normal][colornumber='29'], .inline_nickname[colornumber='29'],
 .sender[type*=normal][colornumber='30'], .inline_nickname[colornumber='30'],
 .sender[type*=normal][colornumber='31'], .inline_nickname[colornumber='31'] {
-  font-style:italic;
-  font-weight:bold;
+  /*font-style:italic;*/
+  /*font-weight:bold;*/
 }
 
 /* vim:sw=2 ts=2 sts=2 et:*/
