@@ -1,0 +1,305 @@
+@import "colors.less";
+
+/* Basic Body Structure */
+* {
+  font-size:100%;
+  margin:0;
+  padding:0;
+  word-wrap:break-word;
+}
+
+body {
+  background-color:@base3;
+  color:@base00;
+  font:9pt/1.1em "Dejavu Sans Mono", fixed;
+  height:100%;
+  overflow-x:hidden;
+  overflow-y:visible;
+  z-index:100;
+}
+
+body div#body_home {
+  -webkit-transition:opacity 0.8s linear;
+  bottom:0;
+  left:0;
+  max-height:99.99%;
+  opacity:0; /* Set by JavaScript */
+  position:absolute;
+  right:0;
+  width:100%;
+  z-index:100;
+}
+
+body[type=channel] div#body_home {
+  max-height:96.5%;
+}
+
+body .line {
+  margin-top:-1px;
+}
+
+/* Loading Screen */
+body div#loading_screen {
+  -webkit-transition:opacity 0.8s linear;
+  background:@base2;
+  border-radius:5px;
+  border:1px solid @base01;
+  font-size:18px;
+  height:21px;
+  left:50%;
+  margin-left:-150px;
+  margin-top:-11px;
+  opacity:1;
+  padding-left:10px;
+  padding:5px;
+  position:absolute;
+  top:50%;
+  width:300px;
+}
+
+/* Time */
+.time {
+  color:@base1;
+  white-space:nowrap;
+}
+
+/* Encryption Lock */
+.encryptionLock img {
+  float:right;
+  height:11px;
+  margin-top:2px;
+  margin:0;
+  padding-left:10px;
+  padding:0;
+}
+
+/* Links */
+a {
+  border-bottom:dotted 1px;
+  color:inherit;
+  text-decoration:none;
+  word-break:break-all;
+
+  &:hover {
+    border-bottom:solid 1px;
+  }
+}
+
+
+/* Topic Bar */
+#topic_bar {
+  -webkit-transition:opacity 0.8s linear;
+  background:@base1;
+  border-bottom:1px solid @base02;
+  box-shadow:0 1px 5px #777;
+  color:@base01;
+  left:0;
+  opacity:0;
+  overflow:hidden;
+  padding:2px 0.5em 3px;
+  position:fixed;
+  right:0;
+  text-overflow:ellipsis;
+  top:0;
+  white-space:nowrap;
+  z-index:400;
+
+  &:hover {
+    /* Topic bar hover additions contributed with permission from:
+    <https://github.com/hbang/Simplified-Light-Modifications> */
+    color:@base2;
+    overflow:visible;
+    white-space:normal;
+  }
+}
+
+
+
+/* Images */
+body a img {
+  border:0;
+}
+
+body img {
+  display:block;
+  max-width:95%;
+  margin:15px 15px 12px 15px;
+}
+
+/* Remember Line */
+div[id=mark] {
+  position:relative;
+  z-index:295;
+  margin-top:-1px;
+  border-bottom:1px dashed;
+  border-color:@cyan;
+  -webkit-transition:0.2s linear;
+}
+
+/* Historic Line */
+.historic {
+  opacity:0.6;
+}
+
+/* NOTICE/CTCP/WALLOPS */
+body div.line[type*=ctcp],
+body div.line[type*=notice],
+body div.line[type*=wallops] {
+  background:@base2;
+  border-top:1px solid @yellow;
+  border-bottom:1px solid @yellow;
+  color:@red;
+  padding:2px 5px 2px 5px;
+  position:relative;
+  z-index:191;
+}
+
+body div[type*=notice] .sender {
+  color:@red;
+  font-weight:700;
+}
+
+/* PRIVMSG */
+body div.line[type*=privmsg] {
+   padding:3px 5px 3px 5px;
+}
+
+body div.line[type*=privmsg][highlight=true],
+body div.line[type*=action][highlight=true] {
+  font-weight:normal;
+  border-top:1px solid @yellow;
+  border-bottom:1px solid @yellow;
+  background-color:@base2 !important;
+}
+
+body div[type*="privmsg"] .message {
+  color:@base00;
+}
+
+body div[type*=privmsg] p[type*=myself] .message {
+  color:@base00;
+}
+
+body div[type*=privmsg] .sender {
+  white-space:pre-wrap;
+}
+
+/* ACTION */
+body div.line[type*=action] {
+   padding:3px 5px 3px 5px;
+}
+
+body div[type*="action"] .message {
+  color:@base1;
+}
+
+body div[type*=action] .sender {
+}
+
+body div[type*=action] p[type*=myself] .sender,
+body div[type*=action] p[type*=myself] .message {
+  color:@base1;
+}
+
+div[type*=action] .sender:before {
+  content:"\2022";
+  margin-right:0.4em;
+}
+
+/* DEBUG/INVITE */
+body div.line[type*=invite],
+body div.line[type*=debug],
+body div.line[type*=rawhtml] {
+  background:@base3;
+  border-bottom:1px solid @base1;
+  border-top:1px solid @base1;
+  color:@base1;
+  padding:2px 5px 2px 5px;
+  position:relative;
+  z-index:190;
+}
+
+/* Message of the Day (MOTD) */
+/* 720, 721, 722 are used by ShadowIRCd for Oper MOTD. */
+/* 372, 375, 376 are normal MOTD shared by several IRCds. */
+body div.line[command="372"],
+body div.line[command="721"] {
+  border:none;
+  padding-top:3px;
+  padding-bottom:3px;
+}
+
+body div.line[command="375"],
+body div.line[command="720"] { /* Start. */
+  border-bottom:none;
+  padding-top:2px;
+  padding-bottom:3px;
+}
+
+body div.line[command="376"],
+body div.line[command="722"] { /* End. */
+  border-top:none;
+  padding-top:3px;
+  padding-bottom:3px;
+}
+
+body div.line[command="372"] .message,
+body div.line[command="375"] .message,
+body div.line[command="376"] .message
+body div.line[command="720"] .message,
+body div.line[command="721"] .message,
+body div.line[command="722"] .message {
+  font-family:"Menlo" !important;
+}
+
+/* GENERAL EVENT */
+body .event {
+  font-size:smaller;
+}
+body div.line[type*=join],
+body div.line[type*=part],
+body div.line[type*=kick],
+body div.line[type*=quit],
+body div.line[type*=kill],
+body div.line[type*=nick],
+body div.line[type*=mode],
+body div.line[type*=topic],
+body div.line[type*=website] {
+  color:@base1;
+  padding:3px 5px 3px 5px;
+}
+
+div[type*=join] .message:before {
+  content:"→";
+  color:@green;
+}
+
+div[type*=kick] .message:before,
+div[type*=part] .message:before,
+div[type*=quit] .message:before {
+  content:"←";
+  color:@magenta;
+}
+
+div[type*=nick] .message:before {
+  content:"•";
+  color:@cyan;
+}
+
+/* Nickname Colors */
+body div[type*=privmsg] .sender[type*=myself] {
+  color:@base01;
+  font-weight:bold;
+}
+
+// generate a whole lot of nickname color rules
+.senderX (@index) when (@index > -1) {
+  .sender[type*=normal][colornumber='@{index}'],
+  inline_nickname[colornumber='@{index}'] {
+    @n: "nick_@{index}";
+    color: @@n;
+  }
+  .senderX(@index - 1);
+}
+.senderX (-1) {}
+.senderX(31);

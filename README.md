@@ -8,10 +8,19 @@ Installation
 
     git clone https://github.com/bd808/Textual-Theme-bd808.git
     cd Textual-Theme-bd808
-    make
+    make install
 
 In Textual, press `⌘,` to open the preferences. Click _Style_ then choose
 _bd808_ from the list.
+
+Compiling
+---------
+The css and js files are built from less and CoffeeScript respectively. To
+recompile:
+
+    npm install -g coffee-script
+    npm install -g less
+    make compile
 
 Credits
 -------
