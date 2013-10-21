@@ -11,7 +11,7 @@
 body {
   background-color:@base3;
   color:@base00;
-  font:9pt/1.1em "Dejavu Sans Mono", fixed;
+  font:10pt/1.1em "Dejavu Sans Mono", fixed;
   height:100%;
   overflow-x:hidden;
   overflow-y:visible;
@@ -30,73 +30,39 @@ body div#body_home {
   z-index:100;
 }
 
-body[type=channel] div#body_home {
+body[type="channel"] div#body_home {
   max-height:96.5%;
-}
-
-body .line {
-  margin-top:-1px;
 }
 
 /* Loading Screen */
 body div#loading_screen {
   -webkit-transition:opacity 0.8s linear;
   background:@base2;
-  border-radius:5px;
   border:1px solid @base01;
+  border-radius:5px;
   font-size:18px;
   height:21px;
   left:50%;
   margin-left:-150px;
   margin-top:-11px;
   opacity:1;
-  padding-left:10px;
-  padding:5px;
+  padding:5px 5px 5px 10px;
   position:absolute;
   top:50%;
   width:300px;
 }
-
-/* Time */
-.time {
-  color:@base1;
-  white-space:nowrap;
-}
-
-/* Encryption Lock */
-.encryptionLock img {
-  float:right;
-  height:11px;
-  margin-top:2px;
-  margin:0;
-  padding-left:10px;
-  padding:0;
-}
-
-/* Links */
-a {
-  border-bottom:dotted 1px;
-  color:inherit;
-  text-decoration:none;
-  word-break:break-all;
-
-  &:hover {
-    border-bottom:solid 1px;
-  }
-}
-
 
 /* Topic Bar */
 #topic_bar {
   -webkit-transition:opacity 0.8s linear;
   background:@base1;
   border-bottom:1px solid @base02;
-  box-shadow:0 1px 5px #777;
+  box-shadow:0 1px 5px @base01;
   color:@base01;
   left:0;
   opacity:0;
   overflow:hidden;
-  padding:2px 0.5em 3px;
+  padding:.3em .5em;
   position:fixed;
   right:0;
   text-overflow:ellipsis;
@@ -113,7 +79,45 @@ a {
   }
 }
 
+/* Remember Line */
+#mark {
+  margin-top:-1px;
+  border-bottom:1px dashed @cyan;
+  -webkit-transition:border 0.2s linear;
+}
 
+/* Historic Line */
+.historic {
+  opacity:0.6;
+}
+
+/* Time */
+.time {
+  color:@base1;
+  white-space:nowrap;
+}
+
+/* Encryption Lock */
+.encryptionLock img {
+  float:right;
+  height:11px;
+  margin:0;
+  margin-top:2px;
+  padding:0;
+  padding-left:10px;
+}
+
+/* Links */
+a {
+  border-bottom:dotted 1px;
+  color:inherit;
+  text-decoration:none;
+  word-break:break-all;
+
+  &:hover {
+    border-bottom:solid 1px;
+  }
+}
 
 /* Images */
 body a img {
@@ -126,176 +130,172 @@ body img {
   margin:15px 15px 12px 15px;
 }
 
-/* Remember Line */
-div[id=mark] {
-  position:relative;
-  z-index:295;
+/* lines */
+body .line {
   margin-top:-1px;
-  border-bottom:1px dashed;
-  border-color:@cyan;
-  -webkit-transition:0.2s linear;
-}
-
-/* Historic Line */
-.historic {
-  opacity:0.6;
+  padding:3px 5px 2px 5px;
 }
 
 /* NOTICE/CTCP/WALLOPS */
-body div.line[type*=ctcp],
-body div.line[type*=notice],
-body div.line[type*=wallops] {
+body div.line[type~="ctcp"],
+body div.line[type~="notice"],
+body div.line[type~="wallops"] {
   background:@base2;
-  border-top:1px solid @yellow;
-  border-bottom:1px solid @yellow;
-  color:@red;
-  padding:2px 5px 2px 5px;
-  position:relative;
-  z-index:191;
+  border:1px solid @blue;
+  border-width:1px 0 1px 0;
+  .sender {
+    color:@red;
+    font-weight:700;
+  }
 }
-
-body div[type*=notice] .sender {
-  color:@red;
-  font-weight:700;
+.consecutive-type(@type) {
+  body div.line[type~="@{type}"] + div.line[type~="@{type}"] {
+    border-top:none;
+  }
 }
+.consecutive-type(cctp);
+.consecutive-type(notice);
+.consecutive-type(wallops);
 
 /* PRIVMSG */
-body div.line[type*=privmsg] {
-   padding:3px 5px 3px 5px;
+body div.line[type~="privmsg"] {
+  .message {
+    color:@base00;
+  }
+  .sender {
+    white-space:pre-wrap;
+  }
 }
 
-body div.line[type*=privmsg][highlight=true],
-body div.line[type*=action][highlight=true] {
+body div.line[highlight="true"] {
   font-weight:normal;
-  border-top:1px solid @yellow;
-  border-bottom:1px solid @yellow;
+  border:1px solid @yellow;
+  border-width:1px 0;
   background-color:@base2 !important;
 }
 
-body div[type*="privmsg"] .message {
-  color:@base00;
-}
-
-body div[type*=privmsg] p[type*=myself] .message {
-  color:@base00;
-}
-
-body div[type*=privmsg] .sender {
-  white-space:pre-wrap;
-}
-
 /* ACTION */
-body div.line[type*=action] {
-   padding:3px 5px 3px 5px;
+body div.line[type~="action"] {
+  .message {
+    font-style:italic;
+  }
+  .sender {
+    &:before {
+      content:"•";
+      margin-right:0.4em;
+    }
+  }
 }
 
-body div[type*="action"] .message {
+/* GENERAL EVENT */
+body div.event[type~="join"],
+body div.event[type~="part"],
+body div.event[type~="kick"],
+body div.event[type~="quit"],
+body div.event[type~="kill"],
+body div.event[type~="nick"],
+body div.event[type~="mode"],
+body div.event[type~="topic"],
+body div.event[type~="website"] {
   color:@base1;
+  font-size:smaller;
+  .time {
+    padding-left:1.2em;
+  }
+}
+body div.event[type~="join"],
+body div.event[type~="part"],
+body div.event[type~="quit"],
+body div.event[type~="nick"] {
+  .sender,
+  .message {
+    font-style:italic;
+  }
 }
 
-body div[type*=action] .sender {
+body div.event[type~="join"] .message:before {
+  content:"⇀";
+  color:@green;
 }
 
-body div[type*=action] p[type*=myself] .sender,
-body div[type*=action] p[type*=myself] .message {
-  color:@base1;
+body div.event[type~="kick"] .message:before,
+body div.event[type~="part"] .message:before,
+body div.event[type~="quit"] .message:before {
+  content:"↽";
+  color:@magenta;
 }
 
-div[type*=action] .sender:before {
-  content:"\2022";
-  margin-right:0.4em;
+body div.event[type~="nick"] .message:before {
+  content:"○";
+  color:@cyan;
 }
 
 /* DEBUG/INVITE */
-body div.line[type*=invite],
-body div.line[type*=debug],
-body div.line[type*=rawhtml] {
+body div.event[type~="invite"],
+body div.event[type~="debug"],
+body div.event[type~="rawhtml"] {
   background:@base3;
-  border-bottom:1px solid @base1;
-  border-top:1px solid @base1;
-  color:@base1;
-  padding:2px 5px 2px 5px;
-  position:relative;
-  z-index:190;
+  border:1px solid @base2;
+  border-width:1px 0;
 }
 
 /* Message of the Day (MOTD) */
 /* 720, 721, 722 are used by ShadowIRCd for Oper MOTD. */
 /* 372, 375, 376 are normal MOTD shared by several IRCds. */
-body div.line[command="372"],
-body div.line[command="721"] {
-  border:none;
-  padding-top:3px;
-  padding-bottom:3px;
-}
-
-body div.line[command="375"],
-body div.line[command="720"] { /* Start. */
+body div.event[command="375"],
+body div.event[command="720"] {
+  /* Start MOTD. */
   border-bottom:none;
-  padding-top:2px;
-  padding-bottom:3px;
 }
-
-body div.line[command="376"],
-body div.line[command="722"] { /* End. */
+body div.event[command="372"],
+body div.event[command="721"] {
+  border:none;
+  .time {
+    display:none;
+  }
+  .message {
+    padding-left:2em;
+  }
+}
+body div.event[command="376"],
+body div.event[command="722"] {
+  /* End MOTD. */
   border-top:none;
-  padding-top:3px;
-  padding-bottom:3px;
 }
 
-body div.line[command="372"] .message,
-body div.line[command="375"] .message,
-body div.line[command="376"] .message
-body div.line[command="720"] .message,
-body div.line[command="721"] .message,
-body div.line[command="722"] .message {
-  font-family:"Menlo" !important;
+/* Help */
+body div.event[command="704"] {
+  border-bottom:none;
+}
+body div.event[command="705"] {
+  border:none;
+  .time {
+    display:none;
+  }
+  .message {
+    padding-left:2em;
+  }
+}
+body div.event[command="706"] {
+  border-top:none;
 }
 
-/* GENERAL EVENT */
-body .event {
-  font-size:smaller;
-}
-body div.line[type*=join],
-body div.line[type*=part],
-body div.line[type*=kick],
-body div.line[type*=quit],
-body div.line[type*=kill],
-body div.line[type*=nick],
-body div.line[type*=mode],
-body div.line[type*=topic],
-body div.line[type*=website] {
-  color:@base1;
-  padding:3px 5px 3px 5px;
-}
-
-div[type*=join] .message:before {
-  content:"→";
-  color:@green;
-}
-
-div[type*=kick] .message:before,
-div[type*=part] .message:before,
-div[type*=quit] .message:before {
-  content:"←";
-  color:@magenta;
-}
-
-div[type*=nick] .message:before {
-  content:"•";
-  color:@cyan;
+/* Local Debug */
+body div.event[command~="-100"] + div.event[command~="-100"] {
+  border-top:none;
 }
 
 /* Nickname Colors */
-body div[type*=privmsg] .sender[type*=myself] {
+.sender[type~="myself"] {
   color:@base01;
   font-weight:bold;
 }
 
 // generate a whole lot of nickname color rules
+// see @nick_[0..31] in colors.less
 .senderX (@index) when (@index > -1) {
-  .sender[type*=normal][colornumber='@{index}'],
-  inline_nickname[colornumber='@{index}'] {
+  .sender[type~="normal"][colornumber="@{index}"],
+  inline_nickname[colornumber="@{index}"] {
     @n: "nick_@{index}";
     color: @@n;
   }
@@ -303,3 +303,19 @@ body div[type*=privmsg] .sender[type*=myself] {
 }
 .senderX (-1) {}
 .senderX(31);
+
+/*muted senders*/
+body div.line[type~="muted"] {
+  color:@base1;
+  font-size:smaller;
+  .time {
+    padding-left:.75em;
+  }
+  .sender {
+    color:inherit !important;
+  }
+  .message {
+    color:@base1;
+  }
+}
+
