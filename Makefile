@@ -4,6 +4,7 @@ LESSC = lessc
 TEXTUAL_DIR = $(HOME)/Library/Containers/com.codeux.irc.textual/Data/Library/Application\ Support/Textual\ IRC/Styles
 
 RSYNC_FLAGS = --exclude ".git" --exclude ".DS_Store" --exclude "Makefile" --exclude "*.sw*" --exclude "src" --exclude "build" --exclude ".gitignore"
+LESSC_FLAGS = --no-ie-compat -O2 --strict-imports
 
 JSSRC = $(wildcard src/scripts/*.coffee)
 JSOBJ = ${JSSRC:src/scripts/%.coffee=build/%.js}
@@ -13,21 +14,21 @@ JSOUT = scripts.js
 all: compile install
 
 $(JSOUT): $(JSOBJ)
-	@cat $^ > $@
+	cat $^ > $@
 
 build/%.js: src/scripts/%.coffee
 	@mkdir -p $(@D)
-	@$(COFFEEC) -cp $< > $@
+	$(COFFEEC) -cp $< > $@
 
 CSSSRC = src/styles/design.less
 CSSOBJ = ${CSSSRC:src/styles/%.less=build/%.css}
 CSSOUT = design.css
 
 $(CSSOUT): $(CSSOBJ)
-	@cat $^ > $@
+	cat $^ > $@
 
 build/%.css: src/styles/%.less
-	@$(LESSC) $< > $@
+	$(LESSC) $(LESSC_FLAGS) $< > $@
 
 .PHONY: compile
 compile: $(JSOUT) $(CSSOUT)
@@ -38,4 +39,4 @@ install:
 
 .PHONY: clean
 clean:
-	@-rm -rf build
+	-rm -rf build
