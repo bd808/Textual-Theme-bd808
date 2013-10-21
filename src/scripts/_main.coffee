@@ -15,7 +15,7 @@ _trigger = (event, args...) ->
       catch err
         console.log "Error handling #{event} with #{handler}: #{err}"
       return
-    return
+  return
 
 # register to receive a message
 Textual.bind = (event, handler) ->
@@ -35,8 +35,8 @@ Textual.viewFinishedReload = ->
   Textual.viewFinishedLoading()
 
 Textual.newMessagePostedToView = (lineId) ->
-  line = document.getElementById("line#{lineId}")
-  line = document.getElementById("line-#{lineId}") unless line
+  line = document.getElementById("line-#{lineId}")
+  line = document.getElementById("line#{lineId}") unless line
   return unless line
 
   _trigger "newMessagePostedToView", line
