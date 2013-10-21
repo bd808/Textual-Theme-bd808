@@ -21,7 +21,6 @@ body div#body_home {
   max-height: 99.99%;
   opacity: 0;
   /* Set by JavaScript */
-
   position: absolute;
   right: 0;
   width: 100%;
@@ -68,7 +67,6 @@ body div#loading_screen {
 #topic_bar:hover {
   /* Topic bar hover additions contributed with permission from:
     <https://github.com/hbang/Simplified-Light-Modifications> */
-
   color: #eee8d5;
   overflow: visible;
   white-space: normal;
@@ -227,7 +225,6 @@ body div.event[type~="rawhtml"] {
 body div.event[command="375"],
 body div.event[command="720"] {
   /* Start MOTD. */
-
   border-bottom: none;
 }
 body div.event[command="372"],
@@ -245,7 +242,6 @@ body div.event[command="721"] .message {
 body div.event[command="376"],
 body div.event[command="722"] {
   /* End MOTD. */
-
   border-top: none;
 }
 /* Help */
