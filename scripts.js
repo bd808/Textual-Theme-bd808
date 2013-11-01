@@ -220,7 +220,7 @@
   var MUTED,
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  MUTED = ['grrrit-wm', 'icinga-wm', 'labs-morebots', 'morebots', 'snitch', 'wikibugs'];
+  MUTED = ['grrrit-wm', 'icinga-wm', 'icinga-wm_', 'labs-morebots', 'morebots', 'snitch', 'wikibugs'];
 
   Textual.bind('newMessagePostedToView', function(line) {
     var e, type, _ref;
