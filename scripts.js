@@ -204,9 +204,9 @@
 (function() {
   var HTML_GERRIT, RE_GERRIT;
 
-  RE_GERRIT = /\b(?:gerrit):(\S+)\b/ig;
+  RE_GERRIT = /\b(?:gerrit)[|:](\S+)\b/ig;
 
-  HTML_GERRIT = '<a href="https://gerrit.wikimedia.org/r/$1">$&</a>';
+  HTML_GERRIT = '<a href="https://gerrit.wikimedia.org/r/?#q,$1,n,z">$&</a>';
 
   Textual.bind('newMessagePostedToView', function(line) {
     if (RE_GERRIT.test(line.innerHTML)) {
