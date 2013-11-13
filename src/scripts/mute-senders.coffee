@@ -10,6 +10,7 @@ MUTED = [
   'morebots',
   'snitch',
   'wikibugs',
+  'wm-bot3',
 ]
 
 Textual.bind 'newMessagePostedToView', (line) ->
