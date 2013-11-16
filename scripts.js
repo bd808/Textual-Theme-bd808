@@ -90,6 +90,9 @@
       var _this = this;
       this.key = 'textual.colorNicks';
       this.css = document.createElement('style');
+      this.css.id = 'textual-colorNicks';
+      this.css.type = 'text/css';
+      this.css.media = 'all';
       Textual.bind("newMessagePostedToView", function(line) {
         return _this.newMessagePostedToView(line);
       });
@@ -162,13 +165,13 @@
       for (nick in c) {
         this.addCss(nick, c[nick]);
       }
-      document.body.appendChild(this.css);
+      document.head.appendChild(this.css);
     };
 
     NickColorizer.prototype.newMessagePostedToView = function(line) {
       var e, _fn, _i, _len, _ref,
         _this = this;
-      _ref = line.querySelectorAll(".sender, .message .inline_nickname");
+      _ref = line.querySelectorAll(".sender, .inline_nickname");
       _fn = function(e) {
         var nick;
         nick = false;
@@ -190,7 +193,7 @@
     };
 
     NickColorizer.prototype.addCss = function(nick, color) {
-      this.css.textContent += ".sender[nick='" + nick + "'], .inline_nickname[nick='" + nick + "'] { color: " + color + " !important; }";
+      this.css.textContent += "\n.sender[nick='" + nick + "'], .inline_nickname[nick='" + nick + "'] { color: " + color + " !important; }";
     };
 
     return NickColorizer;

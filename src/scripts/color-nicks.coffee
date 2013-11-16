@@ -11,6 +11,10 @@ class NickColorizer
     @key = 'textual.colorNicks'
     @css = document.createElement('style')
 
+    @css.id = 'textual-colorNicks'
+    @css.type = 'text/css';
+    @css.media = 'all';
+
     # register callbacks
     Textual.bind "newMessagePostedToView", (line) =>
       @newMessagePostedToView line
@@ -90,11 +94,11 @@ class NickColorizer
     c = @load()
     for nick of c
       @addCss nick, c[nick]
-    document.body.appendChild @css
+    document.head.appendChild @css
     return
 
   newMessagePostedToView: (line) ->
-    for e in line.querySelectorAll(".sender, .message .inline_nickname")
+    for e in line.querySelectorAll(".sender, .inline_nickname")
       do (e) =>
         nick = false
         if e.className is "inline_nickname"
@@ -107,7 +111,7 @@ class NickColorizer
       return
 
   addCss: (nick, color) ->
-    @css.textContent += ".sender[nick='#{nick}'], .inline_nickname[nick='#{nick}'] { color: #{color} !important; }"
+    @css.textContent += "\n.sender[nick='#{nick}'], .inline_nickname[nick='#{nick}'] { color: #{color} !important; }"
     return
 
 colorNicks = new NickColorizer()
