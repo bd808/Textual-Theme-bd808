@@ -10,6 +10,7 @@ MUTED = [
   'morebots',
   'snitch',
   'wikibugs',
+  'wm-bot',
   'wm-bot3',
 ]
 
