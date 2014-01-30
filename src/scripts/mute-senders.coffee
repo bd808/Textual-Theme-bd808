@@ -5,8 +5,8 @@
 MUTED = [
   'grrrit-wm',
   'icinga-wm',
-  'icinga-wm_',
   'labs-morebots',
+  'libel',
   'morebots',
   'snitch',
   'wikibugs',
@@ -16,7 +16,13 @@ MUTED = [
 
 Textual.bind 'newMessagePostedToView', (line) ->
   e = line.querySelector('.sender')
-  if (e && e.getAttribute('nick') in MUTED)
+  cleanNick = (nick) ->
+    nick = nick.toLowerCase()
+    nick = nick.replace(/[`_]+$/, "")
+    nick = nick.replace(/\|.*$/, "")
+    nick.replace(/^(!\[|!\{)(.*)(\[.*\]|\{.*\})$/, "$2")
+
+  if (e && cleanNick( e.getAttribute('nick') ) in MUTED)
     type = line.getAttribute 'type'
     line.setAttribute 'type', "#{type} muted"
   return

@@ -223,12 +223,18 @@
   var MUTED,
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  MUTED = ['grrrit-wm', 'icinga-wm', 'icinga-wm_', 'labs-morebots', 'morebots', 'snitch', 'wikibugs', 'wm-bot', 'wm-bot3'];
+  MUTED = ['grrrit-wm', 'icinga-wm', 'labs-morebots', 'libel', 'morebots', 'snitch', 'wikibugs', 'wm-bot', 'wm-bot3'];
 
   Textual.bind('newMessagePostedToView', function(line) {
-    var e, type, _ref;
+    var cleanNick, e, type, _ref;
     e = line.querySelector('.sender');
-    if (e && (_ref = e.getAttribute('nick'), __indexOf.call(MUTED, _ref) >= 0)) {
+    cleanNick = function(nick) {
+      nick = nick.toLowerCase();
+      nick = nick.replace(/[`_]+$/, "");
+      nick = nick.replace(/\|.*$/, "");
+      return nick.replace(/^(!\[|!\{)(.*)(\[.*\]|\{.*\})$/, "$2");
+    };
+    if (e && (_ref = cleanNick(e.getAttribute('nick')), __indexOf.call(MUTED, _ref) >= 0)) {
       type = line.getAttribute('type');
       line.setAttribute('type', "" + type + " muted");
     }
