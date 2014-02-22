@@ -12,6 +12,7 @@ MUTED = [
   'wikibugs',
   'wm-bot',
   'wm-bot3',
+  'wmf-selenium-bot',
 ]
 
 Textual.bind 'newMessagePostedToView', (line) ->

@@ -223,7 +223,7 @@
   var MUTED,
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  MUTED = ['grrrit-wm', 'icinga-wm', 'labs-morebots', 'libel', 'morebots', 'snitch', 'wikibugs', 'wm-bot', 'wm-bot3'];
+  MUTED = ['grrrit-wm', 'icinga-wm', 'labs-morebots', 'libel', 'morebots', 'snitch', 'wikibugs', 'wm-bot', 'wm-bot3', 'wmf-selenium-bot'];
 
   Textual.bind('newMessagePostedToView', function(line) {
     var cleanNick, e, type, _ref;
