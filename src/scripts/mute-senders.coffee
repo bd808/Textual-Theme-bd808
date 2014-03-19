@@ -12,6 +12,8 @@ MUTED = [
   'wikibugs',
   'wm-bot',
   'wm-bot3',
+  'wm-labs-meetbot',
+  'wm-labs-meetbot`',
   'wmf-selenium-bot',
 ]
 
