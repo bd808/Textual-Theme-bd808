@@ -15,6 +15,7 @@ MUTED = [
   'wm-bot3',
   'wm-labs-meetbot',
   'wm-labs-meetbot`',
+  'wmf-insecte',
   'wmf-selenium-bot',
 ]
 
