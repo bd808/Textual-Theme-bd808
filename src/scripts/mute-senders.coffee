@@ -8,6 +8,7 @@ MUTED = [
   'labs-morebots',
   'libel',
   'morebots',
+  'mw-jenkinsbot',
   'snitch',
   'wikibugs',
   'wm-bot',
