@@ -9,6 +9,7 @@ MUTED = [
   'labs-morebots',
   'libel',
   'morebots',
+  'mostbots',
   'mw-jenkinsbot',
   'pywikibugs',
   'pywikibugs2',
