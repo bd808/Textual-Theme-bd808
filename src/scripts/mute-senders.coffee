@@ -5,6 +5,7 @@
 MUTED = [
   'grrrit-wm',
   'grrrit-wm1',
+  'grrrit-wm2',
   'icinga-wm',
   'labs-morebots',
   'libel',
