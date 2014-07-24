@@ -22,6 +22,7 @@ MUTED = [
   'wm-labs-meetbot`',
   'wmf-insecte',
   'wmf-selenium-bot',
+  'wikiphabot',
 ]
 
 Textual.bind 'newMessagePostedToView', (line) ->
