@@ -3,6 +3,7 @@
 # TODO: find a way to manage the sender list via commands in client
 
 MUTED = [
+  'ecmabot-wm',
   'grrrit-wm',
   'grrrit-wm1',
   'grrrit-wm2',
@@ -16,13 +17,13 @@ MUTED = [
   'pywikibugs2',
   'snitch',
   'wikibugs',
+  'wikiphabot',
   'wm-bot',
   'wm-bot3',
   'wm-labs-meetbot',
   'wm-labs-meetbot`',
   'wmf-insecte',
   'wmf-selenium-bot',
-  'wikiphabot',
 ]
 
 Textual.bind 'newMessagePostedToView', (line) ->
