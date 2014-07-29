@@ -16,6 +16,7 @@ MUTED = [
   'pywikibugs',
   'pywikibugs2',
   'snitch',
+  'travis-ci',
   'wikibugs',
   'wikiphabot',
   'wm-bot',
