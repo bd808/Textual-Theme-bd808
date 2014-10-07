@@ -4,6 +4,7 @@
 
 MUTED = [
   'ecmabot-wm',
+  'gh-wmde',
   'github',
   'grrrit-wm',
   'grrrit-wm1',
