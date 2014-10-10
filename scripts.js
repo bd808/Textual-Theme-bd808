@@ -223,7 +223,7 @@
   var MUTED,
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  MUTED = ['ecmabot-wm', 'gh-datavalues', 'gh-wmde', 'github', 'grrrit-wm', 'grrrit-wm1', 'grrrit-wm2', 'icinga-wm', 'labs-morebots', 'libel', 'morebots', 'mostbots', 'mw-jenkinsbot', 'pywikibugs', 'pywikibugs2', 'qa-morebots', 'snitch', 'travis-ci', 'wikibugs', 'wikiphabot', 'wm-bot', 'wm-bot3', 'wm-labs-meetbot', 'wm-labs-meetbot`', 'wmf-insecte', 'wmf-selenium-bot'];
+  MUTED = ['ecmabot-wm', 'gh-datavalues', 'gh-wmde', 'github', 'grrrit-wm', 'grrrit-wm1', 'grrrit-wm2', 'icinga-wm', 'labs-morebots', 'libel', 'morebots', 'mostbots', 'mw-jenkinsbot', 'phabot', 'pywikibugs', 'pywikibugs2', 'qa-morebots', 'snitch', 'travis-ci', 'wikibugs', 'wikiphabot', 'wm-bot', 'wm-bot3', 'wm-labs-meetbot', 'wm-labs-meetbot`', 'wmf-insecte', 'wmf-selenium-bot'];
 
   Textual.bind('newMessagePostedToView', function(line) {
     var cleanNick, e, type, _ref;
@@ -245,9 +245,9 @@
 (function() {
   var HTML_PHAB, RE_PHAB;
 
-  RE_PHAB = /\b([TMP]\d+)\b/g;
+  RE_PHAB = /([^/])\b([TMP]\d+)\b/g;
 
-  HTML_PHAB = '<a href="https://phabricator.wikimedia.org/$1">$&</a>';
+  HTML_PHAB = '$1<a href="https://phabricator.wikimedia.org/$2">$2</a>';
 
   Textual.bind('newMessagePostedToView', function(line) {
     if (RE_PHAB.test(line.innerHTML)) {
