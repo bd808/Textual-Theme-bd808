@@ -7,6 +7,7 @@ MUTED = [
   'gh-datavalues',
   'gh-wmde',
   'github',
+  'github-wmde',
   'grrrit-wm',
   'grrrit-wm1',
   'grrrit-wm2',
