@@ -25,6 +25,7 @@ MUTED = [
   'snitch',
   'travis-ci',
   'wikibugs',
+  'wikibugs2',
   'wikiphabot',
   'wm-bot',
   'wm-bot3',
