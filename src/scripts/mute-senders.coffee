@@ -19,6 +19,7 @@ MUTED = [
   'mw-jenkinsbot',
   'phabot',
   'phawikibugs',
+  'phawkes',
   'pywikibugs',
   'pywikibugs2',
   'qa-morebots',
