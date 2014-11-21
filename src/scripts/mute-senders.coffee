@@ -23,6 +23,7 @@ MUTED = [
   'pywikibugs',
   'pywikibugs2',
   'qa-morebots',
+  'shinken-wm',
   'snitch',
   'travis-ci',
   'wikibugs',
