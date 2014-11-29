@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 # colorNicks from https://github.com/hbang/Sapientia-Modifications
 # * (based on https://github.com/kirbylover4000/irccloud-colornicks
@@ -12,8 +12,8 @@ class NickColorizer
     @css = document.createElement('style')
 
     @css.id = 'textual-colorNicks'
-    @css.type = 'text/css';
-    @css.media = 'all';
+    @css.type = 'text/css'
+    @css.media = 'all'
 
     # register callbacks
     Textual.bind "newMessagePostedToView", (line) =>
@@ -103,15 +103,15 @@ class NickColorizer
         nick = false
         if e.className is "inline_nickname"
           nick = e.innerText
-          e.setAttribute "nick", e.innerText
+          e.setAttribute "nickname", e.innerText
         else
-          nick = e.getAttribute "nick"
+          nick = e.getAttribute "nickname"
         @addNick nick if nick
         return
       return
 
   addCss: (nick, color) ->
-    @css.textContent += "\n.sender[nick='#{nick}'], .inline_nickname[nick='#{nick}'] { color: #{color} !important; }"
+    @css.textContent += "\n.sender[nickname='#{nick}'], .inline_nickname[nickname='#{nick}'] { color: #{color} !important; }"
     return
 
 colorNicks = new NickColorizer()

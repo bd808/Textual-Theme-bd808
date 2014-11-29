@@ -26,7 +26,7 @@ body div#body_home {
   width: 100%;
   z-index: 100;
 }
-body[type="channel"] div#body_home {
+body[viewtype="channel"] div#body_home {
   max-height: 96.5%;
 }
 /* Loading Screen */
@@ -120,33 +120,33 @@ body .line {
   padding: 3px 5px 2px 5px;
 }
 /* NOTICE/CTCP/WALLOPS */
-body div.line[type~="ctcp"],
-body div.line[type~="notice"],
-body div.line[type~="wallops"] {
+body div.line[ltype~="ctcp"],
+body div.line[ltype~="notice"],
+body div.line[ltype~="wallops"] {
   background: #eee8d5;
   border: 1px solid #268bd2;
   border-width: 1px 0 1px 0;
 }
-body div.line[type~="ctcp"] .sender,
-body div.line[type~="notice"] .sender,
-body div.line[type~="wallops"] .sender {
+body div.line[ltype~="ctcp"] .sender,
+body div.line[ltype~="notice"] .sender,
+body div.line[ltype~="wallops"] .sender {
   color: #d30102;
   font-weight: 700;
 }
-body div.line[type~="cctp"] + div.line[type~="cctp"] {
+body div.line[ltype~="cctp"] + div.line[ltype~="cctp"] {
   border-top: none;
 }
-body div.line[type~="notice"] + div.line[type~="notice"] {
+body div.line[ltype~="notice"] + div.line[ltype~="notice"] {
   border-top: none;
 }
-body div.line[type~="wallops"] + div.line[type~="wallops"] {
+body div.line[ltype~="wallops"] + div.line[ltype~="wallops"] {
   border-top: none;
 }
 /* PRIVMSG */
-body div.line[type~="privmsg"] .message {
+body div.line[ltype~="privmsg"] .message {
   color: #657b83;
 }
-body div.line[type~="privmsg"] .sender {
+body div.line[ltype~="privmsg"] .sender {
   white-space: pre-wrap;
 }
 body div.line[highlight="true"] {
@@ -156,65 +156,65 @@ body div.line[highlight="true"] {
   background-color: #eee8d5 !important;
 }
 /* ACTION */
-body div.line[type~="action"] .message {
+body div.line[ltype~="action"] .message {
   font-style: italic;
 }
-body div.line[type~="action"] .sender:before {
+body div.line[ltype~="action"] .sender:before {
   content: "•";
   margin-right: 0.4em;
 }
 /* GENERAL EVENT */
-body div.event[type~="join"],
-body div.event[type~="part"],
-body div.event[type~="kick"],
-body div.event[type~="quit"],
-body div.event[type~="kill"],
-body div.event[type~="nick"],
-body div.event[type~="mode"],
-body div.event[type~="topic"],
-body div.event[type~="website"] {
+body div.event[ltype~="join"],
+body div.event[ltype~="part"],
+body div.event[ltype~="kick"],
+body div.event[ltype~="quit"],
+body div.event[ltype~="kill"],
+body div.event[ltype~="nick"],
+body div.event[ltype~="mode"],
+body div.event[ltype~="topic"],
+body div.event[ltype~="website"] {
   color: #93a1a1;
   font-size: smaller;
 }
-body div.event[type~="join"] .time,
-body div.event[type~="part"] .time,
-body div.event[type~="kick"] .time,
-body div.event[type~="quit"] .time,
-body div.event[type~="kill"] .time,
-body div.event[type~="nick"] .time,
-body div.event[type~="mode"] .time,
-body div.event[type~="topic"] .time,
-body div.event[type~="website"] .time {
+body div.event[ltype~="join"] .time,
+body div.event[ltype~="part"] .time,
+body div.event[ltype~="kick"] .time,
+body div.event[ltype~="quit"] .time,
+body div.event[ltype~="kill"] .time,
+body div.event[ltype~="nick"] .time,
+body div.event[ltype~="mode"] .time,
+body div.event[ltype~="topic"] .time,
+body div.event[ltype~="website"] .time {
   padding-left: 1.2em;
 }
-body div.event[type~="join"] .sender,
-body div.event[type~="part"] .sender,
-body div.event[type~="quit"] .sender,
-body div.event[type~="nick"] .sender,
-body div.event[type~="join"] .message,
-body div.event[type~="part"] .message,
-body div.event[type~="quit"] .message,
-body div.event[type~="nick"] .message {
+body div.event[ltype~="join"] .sender,
+body div.event[ltype~="part"] .sender,
+body div.event[ltype~="quit"] .sender,
+body div.event[ltype~="nick"] .sender,
+body div.event[ltype~="join"] .message,
+body div.event[ltype~="part"] .message,
+body div.event[ltype~="quit"] .message,
+body div.event[ltype~="nick"] .message {
   font-style: italic;
 }
-body div.event[type~="join"] .message:before {
+body div.event[ltype~="join"] .message:before {
   content: "⇀";
   color: #859900;
 }
-body div.event[type~="kick"] .message:before,
-body div.event[type~="part"] .message:before,
-body div.event[type~="quit"] .message:before {
+body div.event[ltype~="kick"] .message:before,
+body div.event[ltype~="part"] .message:before,
+body div.event[ltype~="quit"] .message:before {
   content: "↽";
   color: #d33682;
 }
-body div.event[type~="nick"] .message:before {
+body div.event[ltype~="nick"] .message:before {
   content: "○";
   color: #2aa198;
 }
 /* DEBUG/INVITE */
-body div.event[type~="invite"],
-body div.event[type~="debug"],
-body div.event[type~="rawhtml"] {
+body div.event[ltype~="invite"],
+body div.event[ltype~="debug"],
+body div.event[ltype~="rawhtml"] {
   background: #fdf6e3;
   border: 1px solid #eee8d5;
   border-width: 1px 0;
@@ -265,149 +265,149 @@ body div.event[command~="-100"] + div.event[command~="-100"] {
   border-top: none;
 }
 /* Nickname Colors */
-.sender[type~="myself"] {
+.sender[ltype~="myself"] {
   color: #586e75;
   font-weight: bold;
 }
-.sender[type~="normal"][colornumber="31"],
+.sender[ltype~="normal"][colornumber="31"],
 inline_nickname[colornumber="31"] {
   color: #859900;
 }
-.sender[type~="normal"][colornumber="30"],
+.sender[ltype~="normal"][colornumber="30"],
 inline_nickname[colornumber="30"] {
   color: #2aa198;
 }
-.sender[type~="normal"][colornumber="29"],
+.sender[ltype~="normal"][colornumber="29"],
 inline_nickname[colornumber="29"] {
   color: #268bd2;
 }
-.sender[type~="normal"][colornumber="28"],
+.sender[ltype~="normal"][colornumber="28"],
 inline_nickname[colornumber="28"] {
   color: #6c71c4;
 }
-.sender[type~="normal"][colornumber="27"],
+.sender[ltype~="normal"][colornumber="27"],
 inline_nickname[colornumber="27"] {
   color: #d33682;
 }
-.sender[type~="normal"][colornumber="26"],
+.sender[ltype~="normal"][colornumber="26"],
 inline_nickname[colornumber="26"] {
   color: #d30102;
 }
-.sender[type~="normal"][colornumber="25"],
+.sender[ltype~="normal"][colornumber="25"],
 inline_nickname[colornumber="25"] {
   color: #cb4b16;
 }
-.sender[type~="normal"][colornumber="24"],
+.sender[ltype~="normal"][colornumber="24"],
 inline_nickname[colornumber="24"] {
   color: #b58900;
 }
-.sender[type~="normal"][colornumber="23"],
+.sender[ltype~="normal"][colornumber="23"],
 inline_nickname[colornumber="23"] {
   color: #859900;
 }
-.sender[type~="normal"][colornumber="22"],
+.sender[ltype~="normal"][colornumber="22"],
 inline_nickname[colornumber="22"] {
   color: #2aa198;
 }
-.sender[type~="normal"][colornumber="21"],
+.sender[ltype~="normal"][colornumber="21"],
 inline_nickname[colornumber="21"] {
   color: #268bd2;
 }
-.sender[type~="normal"][colornumber="20"],
+.sender[ltype~="normal"][colornumber="20"],
 inline_nickname[colornumber="20"] {
   color: #6c71c4;
 }
-.sender[type~="normal"][colornumber="19"],
+.sender[ltype~="normal"][colornumber="19"],
 inline_nickname[colornumber="19"] {
   color: #d33682;
 }
-.sender[type~="normal"][colornumber="18"],
+.sender[ltype~="normal"][colornumber="18"],
 inline_nickname[colornumber="18"] {
   color: #d30102;
 }
-.sender[type~="normal"][colornumber="17"],
+.sender[ltype~="normal"][colornumber="17"],
 inline_nickname[colornumber="17"] {
   color: #cb4b16;
 }
-.sender[type~="normal"][colornumber="16"],
+.sender[ltype~="normal"][colornumber="16"],
 inline_nickname[colornumber="16"] {
   color: #b58900;
 }
-.sender[type~="normal"][colornumber="15"],
+.sender[ltype~="normal"][colornumber="15"],
 inline_nickname[colornumber="15"] {
   color: #859900;
 }
-.sender[type~="normal"][colornumber="14"],
+.sender[ltype~="normal"][colornumber="14"],
 inline_nickname[colornumber="14"] {
   color: #2aa198;
 }
-.sender[type~="normal"][colornumber="13"],
+.sender[ltype~="normal"][colornumber="13"],
 inline_nickname[colornumber="13"] {
   color: #268bd2;
 }
-.sender[type~="normal"][colornumber="12"],
+.sender[ltype~="normal"][colornumber="12"],
 inline_nickname[colornumber="12"] {
   color: #6c71c4;
 }
-.sender[type~="normal"][colornumber="11"],
+.sender[ltype~="normal"][colornumber="11"],
 inline_nickname[colornumber="11"] {
   color: #d33682;
 }
-.sender[type~="normal"][colornumber="10"],
+.sender[ltype~="normal"][colornumber="10"],
 inline_nickname[colornumber="10"] {
   color: #d30102;
 }
-.sender[type~="normal"][colornumber="9"],
+.sender[ltype~="normal"][colornumber="9"],
 inline_nickname[colornumber="9"] {
   color: #cb4b16;
 }
-.sender[type~="normal"][colornumber="8"],
+.sender[ltype~="normal"][colornumber="8"],
 inline_nickname[colornumber="8"] {
   color: #b58900;
 }
-.sender[type~="normal"][colornumber="7"],
+.sender[ltype~="normal"][colornumber="7"],
 inline_nickname[colornumber="7"] {
   color: #859900;
 }
-.sender[type~="normal"][colornumber="6"],
+.sender[ltype~="normal"][colornumber="6"],
 inline_nickname[colornumber="6"] {
   color: #2aa198;
 }
-.sender[type~="normal"][colornumber="5"],
+.sender[ltype~="normal"][colornumber="5"],
 inline_nickname[colornumber="5"] {
   color: #268bd2;
 }
-.sender[type~="normal"][colornumber="4"],
+.sender[ltype~="normal"][colornumber="4"],
 inline_nickname[colornumber="4"] {
   color: #6c71c4;
 }
-.sender[type~="normal"][colornumber="3"],
+.sender[ltype~="normal"][colornumber="3"],
 inline_nickname[colornumber="3"] {
   color: #d33682;
 }
-.sender[type~="normal"][colornumber="2"],
+.sender[ltype~="normal"][colornumber="2"],
 inline_nickname[colornumber="2"] {
   color: #d30102;
 }
-.sender[type~="normal"][colornumber="1"],
+.sender[ltype~="normal"][colornumber="1"],
 inline_nickname[colornumber="1"] {
   color: #cb4b16;
 }
-.sender[type~="normal"][colornumber="0"],
+.sender[ltype~="normal"][colornumber="0"],
 inline_nickname[colornumber="0"] {
   color: #b58900;
 }
 /*muted senders*/
-body div.line[type~="muted"] {
+body div.line[ltype~="muted"] {
   color: #93a1a1;
   font-size: smaller;
 }
-body div.line[type~="muted"] .time {
+body div.line[ltype~="muted"] .time {
   padding-left: .75em;
 }
-body div.line[type~="muted"] .sender {
+body div.line[ltype~="muted"] .sender {
   color: inherit !important;
 }
-body div.line[type~="muted"] .message {
+body div.line[ltype~="muted"] .message {
   color: #93a1a1;
 }

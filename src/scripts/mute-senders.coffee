@@ -45,7 +45,7 @@ Textual.bind 'newMessagePostedToView', (line) ->
     nick = nick.replace(/\|.*$/, "")
     nick.replace(/^(!\[|!\{)(.*)(\[.*\]|\{.*\})$/, "$2")
 
-  if (e && cleanNick( e.getAttribute('nick') ) in MUTED)
-    type = line.getAttribute 'type'
-    line.setAttribute 'type', "#{type} muted"
+  if (e && cleanNick( e.getAttribute('nickname') ) in MUTED)
+    type = line.getAttribute 'ltype'
+    line.setAttribute 'ltype', "#{type} muted"
   return

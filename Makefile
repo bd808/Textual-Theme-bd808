@@ -1,7 +1,7 @@
 COFFEEC = coffee
 LESSC = lessc
 
-TEXTUAL_DIR = $(HOME)/Library/Containers/com.codeux.irc.textual/Data/Library/Application\ Support/Textual\ IRC/Styles
+TEXTUAL_DIR = $(HOME)/Library/Group\ Containers/8482Q6EPL6.com.codeux.irc.textual/Library/Application\ Support/Textual/Styles
 
 RSYNC_FLAGS = --exclude ".git" --exclude ".DS_Store" --exclude "Makefile" --exclude "*.sw*" --exclude "src" --exclude "build" --exclude ".gitignore"
 LESSC_FLAGS = --no-ie-compat -O2 --strict-imports

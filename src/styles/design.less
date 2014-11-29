@@ -30,7 +30,7 @@ body div#body_home {
   z-index:100;
 }
 
-body[type="channel"] div#body_home {
+body[viewtype="channel"] div#body_home {
   max-height:96.5%;
 }
 
@@ -137,9 +137,9 @@ body .line {
 }
 
 /* NOTICE/CTCP/WALLOPS */
-body div.line[type~="ctcp"],
-body div.line[type~="notice"],
-body div.line[type~="wallops"] {
+body div.line[ltype~="ctcp"],
+body div.line[ltype~="notice"],
+body div.line[ltype~="wallops"] {
   background:@base2;
   border:1px solid @blue;
   border-width:1px 0 1px 0;
@@ -149,7 +149,7 @@ body div.line[type~="wallops"] {
   }
 }
 .consecutive-type(@type) {
-  body div.line[type~="@{type}"] + div.line[type~="@{type}"] {
+  body div.line[ltype~="@{type}"] + div.line[ltype~="@{type}"] {
     border-top:none;
   }
 }
@@ -158,7 +158,7 @@ body div.line[type~="wallops"] {
 .consecutive-type(wallops);
 
 /* PRIVMSG */
-body div.line[type~="privmsg"] {
+body div.line[ltype~="privmsg"] {
   .message {
     color:@base00;
   }
@@ -175,7 +175,7 @@ body div.line[highlight="true"] {
 }
 
 /* ACTION */
-body div.line[type~="action"] {
+body div.line[ltype~="action"] {
   .message {
     font-style:italic;
   }
@@ -188,52 +188,52 @@ body div.line[type~="action"] {
 }
 
 /* GENERAL EVENT */
-body div.event[type~="join"],
-body div.event[type~="part"],
-body div.event[type~="kick"],
-body div.event[type~="quit"],
-body div.event[type~="kill"],
-body div.event[type~="nick"],
-body div.event[type~="mode"],
-body div.event[type~="topic"],
-body div.event[type~="website"] {
+body div.event[ltype~="join"],
+body div.event[ltype~="part"],
+body div.event[ltype~="kick"],
+body div.event[ltype~="quit"],
+body div.event[ltype~="kill"],
+body div.event[ltype~="nick"],
+body div.event[ltype~="mode"],
+body div.event[ltype~="topic"],
+body div.event[ltype~="website"] {
   color:@base1;
   font-size:smaller;
   .time {
     padding-left:1.2em;
   }
 }
-body div.event[type~="join"],
-body div.event[type~="part"],
-body div.event[type~="quit"],
-body div.event[type~="nick"] {
+body div.event[ltype~="join"],
+body div.event[ltype~="part"],
+body div.event[ltype~="quit"],
+body div.event[ltype~="nick"] {
   .sender,
   .message {
     font-style:italic;
   }
 }
 
-body div.event[type~="join"] .message:before {
+body div.event[ltype~="join"] .message:before {
   content:"⇀";
   color:@green;
 }
 
-body div.event[type~="kick"] .message:before,
-body div.event[type~="part"] .message:before,
-body div.event[type~="quit"] .message:before {
+body div.event[ltype~="kick"] .message:before,
+body div.event[ltype~="part"] .message:before,
+body div.event[ltype~="quit"] .message:before {
   content:"↽";
   color:@magenta;
 }
 
-body div.event[type~="nick"] .message:before {
+body div.event[ltype~="nick"] .message:before {
   content:"○";
   color:@cyan;
 }
 
 /* DEBUG/INVITE */
-body div.event[type~="invite"],
-body div.event[type~="debug"],
-body div.event[type~="rawhtml"] {
+body div.event[ltype~="invite"],
+body div.event[ltype~="debug"],
+body div.event[ltype~="rawhtml"] {
   background:@base3;
   border:1px solid @base2;
   border-width:1px 0;
@@ -286,7 +286,7 @@ body div.event[command~="-100"] + div.event[command~="-100"] {
 }
 
 /* Nickname Colors */
-.sender[type~="myself"] {
+.sender[ltype~="myself"] {
   color:@base01;
   font-weight:bold;
 }
@@ -294,7 +294,7 @@ body div.event[command~="-100"] + div.event[command~="-100"] {
 // generate a whole lot of nickname color rules
 // see @nick_[0..31] in colors.less
 .senderX (@index) when (@index > -1) {
-  .sender[type~="normal"][colornumber="@{index}"],
+  .sender[ltype~="normal"][colornumber="@{index}"],
   inline_nickname[colornumber="@{index}"] {
     @n: "nick_@{index}";
     color: @@n;
@@ -305,7 +305,7 @@ body div.event[command~="-100"] + div.event[command~="-100"] {
 .senderX(31);
 
 /*muted senders*/
-body div.line[type~="muted"] {
+body div.line[ltype~="muted"] {
   color:@base1;
   font-size:smaller;
   .time {

@@ -21,5 +21,10 @@
 	<string>#D33682</string>
 	<key>Force Invert Sidebars</key>
 	<false/>
+	<key>Template Engine Versions</key>
+	<dict>
+		<key>default</key>
+		<integer>3</integer>
+	</dict>
 </dict>
 </plist>

@@ -177,9 +177,9 @@
         nick = false;
         if (e.className === "inline_nickname") {
           nick = e.innerText;
-          e.setAttribute("nick", e.innerText);
+          e.setAttribute("nickname", e.innerText);
         } else {
-          nick = e.getAttribute("nick");
+          nick = e.getAttribute("nickname");
         }
         if (nick) {
           _this.addNick(nick);
@@ -193,7 +193,7 @@
     };
 
     NickColorizer.prototype.addCss = function(nick, color) {
-      this.css.textContent += "\n.sender[nick='" + nick + "'], .inline_nickname[nick='" + nick + "'] { color: " + color + " !important; }";
+      this.css.textContent += "\n.sender[nickname='" + nick + "'], .inline_nickname[nickname='" + nick + "'] { color: " + color + " !important; }";
     };
 
     return NickColorizer;
@@ -234,9 +234,9 @@
       nick = nick.replace(/\|.*$/, "");
       return nick.replace(/^(!\[|!\{)(.*)(\[.*\]|\{.*\})$/, "$2");
     };
-    if (e && (_ref = cleanNick(e.getAttribute('nick')), __indexOf.call(MUTED, _ref) >= 0)) {
-      type = line.getAttribute('type');
-      line.setAttribute('type', "" + type + " muted");
+    if (e && (_ref = cleanNick(e.getAttribute('nickname')), __indexOf.call(MUTED, _ref) >= 0)) {
+      type = line.getAttribute('ltype');
+      line.setAttribute('ltype', "" + type + " muted");
     }
   });
 
