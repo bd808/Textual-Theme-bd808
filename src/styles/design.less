@@ -286,7 +286,7 @@ body div.event[command~="-100"] + div.event[command~="-100"] {
 }
 
 /* Nickname Colors */
-.sender[ltype~="myself"] {
+.sender[mtype~="myself"] {
   color:@base01;
   font-weight:bold;
 }
@@ -294,7 +294,7 @@ body div.event[command~="-100"] + div.event[command~="-100"] {
 // generate a whole lot of nickname color rules
 // see @nick_[0..31] in colors.less
 .senderX (@index) when (@index > -1) {
-  .sender[ltype~="normal"][colornumber="@{index}"],
+  .sender[mtype~="normal"][colornumber="@{index}"],
   inline_nickname[colornumber="@{index}"] {
     @n: "nick_@{index}";
     color: @@n;
