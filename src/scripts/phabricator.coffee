@@ -6,4 +6,6 @@ HTML_PHAB = '$1<a href="https://phabricator.wikimedia.org/$2">$2</a>'
 
 Textual.bind 'newMessagePostedToView', (line) ->
   if RE_PHAB.test line.innerHTML
-    line.innerHTML = line.innerHTML.replace RE_PHAB, HTML_PHAB
+    for e in line.querySelectorAll('.innerMessage')
+      do (e) =>
+        e.innerHTML = e.innerHTML.replace RE_PHAB, HTML_PHAB

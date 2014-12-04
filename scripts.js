@@ -250,8 +250,18 @@
   HTML_PHAB = '$1<a href="https://phabricator.wikimedia.org/$2">$2</a>';
 
   Textual.bind('newMessagePostedToView', function(line) {
+    var e, _i, _len, _ref, _results,
+      _this = this;
     if (RE_PHAB.test(line.innerHTML)) {
-      return line.innerHTML = line.innerHTML.replace(RE_PHAB, HTML_PHAB);
+      _ref = line.querySelectorAll('.innerMessage');
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        e = _ref[_i];
+        _results.push((function(e) {
+          return e.innerHTML = e.innerHTML.replace(RE_PHAB, HTML_PHAB);
+        })(e));
+      }
+      return _results;
     }
   });
 
