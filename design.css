@@ -397,6 +397,103 @@ inline_nickname[colornumber="1"] {
 inline_nickname[colornumber="0"] {
   color: #b58900;
 }
+/* mIRC color codes */
+.effect[color-number='0'] {
+  color: #fdf6e3;
+}
+.effect[color-number='1'] {
+  color: #002b36;
+}
+.effect[color-number='2'] {
+  color: #859900;
+}
+.effect[color-number='3'] {
+  color: #268bd2;
+}
+.effect[color-number='4'] {
+  color: #d30102;
+}
+.effect[color-number='5'] {
+  color: #7f0000;
+}
+.effect[color-number='6'] {
+  color: #6c71c4;
+}
+.effect[color-number='7'] {
+  color: #cb4b16;
+}
+.effect[color-number='8'] {
+  color: #b58900;
+}
+.effect[color-number='9'] {
+  color: #859900;
+}
+.effect[color-number='10'] {
+  color: #2aa198;
+}
+.effect[color-number='11'] {
+  color: #2aa198;
+}
+.effect[color-number='12'] {
+  color: #268bd2;
+}
+.effect[color-number='13'] {
+  color: #d33682;
+}
+.effect[color-number='14'] {
+  color: #657b83;
+}
+.effect[color-number='15'] {
+  color: #93a1a1;
+}
+.effect[bgcolor-number='0'] {
+  background-color: #fdf6e3;
+}
+.effect[bgcolor-number='1'] {
+  background-color: #002b36;
+}
+.effect[bgcolor-number='2'] {
+  background-color: #859900;
+}
+.effect[bgcolor-number='3'] {
+  background-color: #268bd2;
+}
+.effect[bgcolor-number='4'] {
+  background-color: #d30102;
+}
+.effect[bgcolor-number='5'] {
+  background-color: #7f0000;
+}
+.effect[bgcolor-number='6'] {
+  background-color: #6c71c4;
+}
+.effect[bgcolor-number='7'] {
+  background-color: #cb4b16;
+}
+.effect[bgcolor-number='8'] {
+  background-color: #b58900;
+}
+.effect[bgcolor-number='9'] {
+  background-color: #859900;
+}
+.effect[bgcolor-number='10'] {
+  background-color: #2aa198;
+}
+.effect[bgcolor-number='11'] {
+  background-color: #2aa198;
+}
+.effect[bgcolor-number='12'] {
+  background-color: #268bd2;
+}
+.effect[bgcolor-number='13'] {
+  background-color: #d33682;
+}
+.effect[bgcolor-number='14'] {
+  background-color: #657b83;
+}
+.effect[bgcolor-number='15'] {
+  background-color: #93a1a1;
+}
 /*muted senders*/
 body div.line[ltype~="muted"] {
   color: #93a1a1;
