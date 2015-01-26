@@ -24,6 +24,7 @@ MUTED = [
   'pywikibugs2',
   'qa-morebots',
   'services_bot',
+  'services_bot1',
   'shinken-wm',
   'snitch',
   'travis-ci',
