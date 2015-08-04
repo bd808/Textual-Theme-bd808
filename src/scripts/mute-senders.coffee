@@ -31,6 +31,7 @@ MUTED = [
   'travis-ci',
   'wikibugs',
   'wikibugs2',
+  'wikipedia-github',
   'wikiphabot',
   'wm-bot',
   'wm-bot3',

@@ -223,7 +223,7 @@
   var MUTED,
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  MUTED = ['ecmabot-wm', 'gh-datavalues', 'gh-wmde', 'github', 'github-wmde', 'grrrit-wm', 'grrrit-wm1', 'grrrit-wm2', 'icinga-wm', 'ircnotifier', 'labs-morebots', 'libel', 'morebots', 'mostbots', 'mw-jenkinsbot', 'phabot', 'phawikibugs', 'phawkes', 'pywikibugs', 'pywikibugs2', 'qa-morebots', 'services_bot', 'services_bot1', 'shinken-wm', 'snitch', 'travis-ci', 'wikibugs', 'wikibugs2', 'wikiphabot', 'wm-bot', 'wm-bot3', 'wm-labs-meetbot', 'wm-labs-meetbot`', 'wmf-insecte', 'wmf-selenium-bot'];
+  MUTED = ['ecmabot-wm', 'gh-datavalues', 'gh-wmde', 'github', 'github-wmde', 'grrrit-wm', 'grrrit-wm1', 'grrrit-wm2', 'icinga-wm', 'ircnotifier', 'labs-morebots', 'libel', 'morebots', 'mostbots', 'mw-jenkinsbot', 'phabot', 'phawikibugs', 'phawkes', 'pywikibugs', 'pywikibugs2', 'qa-morebots', 'services_bot', 'services_bot1', 'shinken-wm', 'snitch', 'travis-ci', 'wikibugs', 'wikibugs2', 'wikipedia-github', 'wikiphabot', 'wm-bot', 'wm-bot3', 'wm-labs-meetbot', 'wm-labs-meetbot`', 'wmf-insecte', 'wmf-selenium-bot'];
 
   Textual.bind('newMessagePostedToView', function(line) {
     var cleanNick, e, type, _ref;
