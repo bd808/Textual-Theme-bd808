@@ -13,6 +13,7 @@ MUTED = [
   'grrrit-wm2',
   'icinga-wm',
   'ircnotifier',
+  'krrrit-wm',
   'labs-morebots',
   'libel',
   'morebots',
