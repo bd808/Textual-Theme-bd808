@@ -14,6 +14,7 @@ MUTED = [
   'icinga-wm',
   'ircnotifier',
   'krrrit-wm',
+  'krrrit-wm1',
   'labs-morebots',
   'libel',
   'morebots',
