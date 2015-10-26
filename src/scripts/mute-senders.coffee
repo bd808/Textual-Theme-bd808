@@ -3,6 +3,7 @@
 # TODO: find a way to manage the sender list via commands in client
 
 MUTED = [
+  'analytics-logbot',
   'ecmabot-wm',
   'gh-datavalues',
   'gh-wmde',
