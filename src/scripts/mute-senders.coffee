@@ -31,6 +31,7 @@ MUTED = [
   'services_bot1',
   'shinken-wm',
   'snitch',
+  'testing-shinken-',
   'travis-ci',
   'wikibugs',
   'wikibugs2',
