@@ -74,7 +74,7 @@ body div#loading_screen {
 /* Remember Line */
 #mark {
   margin-top: -1px;
-  border-bottom: 1px dashed #2aa198;
+  border-bottom: 2px dashed #2aa198;
   -webkit-transition: border 0.2s linear;
 }
 /* Historic Line */
