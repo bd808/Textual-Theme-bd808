@@ -21,6 +21,7 @@ MUTED = [
   'morebots',
   'mostbots',
   'mw-jenkinsbot',
+  'paladox',
   'phabot',
   'phawikibugs',
   'phawkes',
