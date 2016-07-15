@@ -4,6 +4,7 @@
 
 MUTED = [
   'analytics-logbot',
+  'Danny_B',
   'ecmabot-wm',
   'gh-datavalues',
   'gh-wmde',
