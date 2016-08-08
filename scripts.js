@@ -223,16 +223,13 @@
   var MUTED,
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  MUTED = ['analytics-logbot', 'danny_b', 'ecmabot-wm', 'gh-datavalues', 'gh-wmde', 'github', 'github-wmde', 'grrrit-wm', 'grrrit-wm1', 'grrrit-wm2', 'icinga-wm', 'ircnotifier', 'krrrit-wm', 'krrrit-wm1', 'labs-morebots', 'libel', 'morebots', 'mostbots', 'mw-jenkinsbot', 'paladox', 'phabot', 'phawikibugs', 'phawkes', 'pywikibugs', 'pywikibugs2', 'qa-morebots', 'services_bot', 'services_bot1', 'shinken-wm', 'snitch', 'testing-shinken-', 'travis-ci', 'wikibugs', 'wikibugs2', 'wikipedia-github', 'wikiphabot', 'wm-bot', 'wm-bot3', 'wm-labs-meetbot', 'wm-labs-meetbot`', 'wmf-insecte', 'wmf-selenium-bot'];
+  MUTED = ['analytics-logbot', 'danny_b', 'ecmabot-wm', 'gh-datavalues', 'gh-wmde', 'github', 'github-wmde', 'grrrit-wm', 'icinga-wm', 'ircnotifier', 'krrrit-wm', 'labs-morebots', 'libel', 'morebots', 'mostbots', 'mw-jenkinsbot', 'paladox', 'phabot', 'phawikibugs', 'phawkes', 'pywikibugs', 'qa-morebots', 'services_bot', 'shinken-wm', 'snitch', 'travis-ci', 'wikibugs', 'wikipedia-github', 'wikiphabot', 'wm-bot', 'wm-labs-meetbot', 'wmf-insecte', 'wmf-selenium-bot'];
 
   Textual.bind('newMessagePostedToView', function(line) {
     var cleanNick, e, type, _ref;
     e = line.querySelector('.sender');
     cleanNick = function(nick) {
-      nick = nick.toLowerCase();
-      nick = nick.replace(/[`_]+$/, "");
-      nick = nick.replace(/\|.*$/, "");
-      return nick.replace(/^(!\[|!\{)(.*)(\[.*\]|\{.*\})$/, "$2");
+      return nick.toLowerCase().replace(/[`_]+$/, "").replace(/\|.*$/, "").replace(/^(!\[|!\{)(.*)(\[.*\]|\{.*\})$/, "$2").replace(/\d+$/, "");
     };
     if (e && (_ref = cleanNick(e.getAttribute('nickname')), __indexOf.call(MUTED, _ref) >= 0)) {
       type = line.getAttribute('ltype');

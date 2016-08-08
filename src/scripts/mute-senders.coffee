@@ -11,12 +11,9 @@ MUTED = [
   'github',
   'github-wmde',
   'grrrit-wm',
-  'grrrit-wm1',
-  'grrrit-wm2',
   'icinga-wm',
   'ircnotifier',
   'krrrit-wm',
-  'krrrit-wm1',
   'labs-morebots',
   'libel',
   'morebots',
@@ -27,22 +24,16 @@ MUTED = [
   'phawikibugs',
   'phawkes',
   'pywikibugs',
-  'pywikibugs2',
   'qa-morebots',
   'services_bot',
-  'services_bot1',
   'shinken-wm',
   'snitch',
-  'testing-shinken-',
   'travis-ci',
   'wikibugs',
-  'wikibugs2',
   'wikipedia-github',
   'wikiphabot',
   'wm-bot',
-  'wm-bot3',
   'wm-labs-meetbot',
-  'wm-labs-meetbot`',
   'wmf-insecte',
   'wmf-selenium-bot',
 ]
@@ -50,10 +41,16 @@ MUTED = [
 Textual.bind 'newMessagePostedToView', (line) ->
   e = line.querySelector('.sender')
   cleanNick = (nick) ->
-    nick = nick.toLowerCase()
-    nick = nick.replace(/[`_]+$/, "")
-    nick = nick.replace(/\|.*$/, "")
-    nick.replace(/^(!\[|!\{)(.*)(\[.*\]|\{.*\})$/, "$2")
+    # Normalize to lowercase
+    nick.toLowerCase()
+    # Strip trailing ` and/or _
+    .replace(/[`_]+$/, "")
+    # Strip trailing |*
+    .replace(/\|.*$/, "")
+    # Strip trailing {*} and/or [*]
+    .replace(/^(!\[|!\{)(.*)(\[.*\]|\{.*\})$/, "$2")
+    # Strip trailing numbers
+    .replace(/\d+$/, "")
 
   if (e && cleanNick( e.getAttribute('nickname') ) in MUTED)
     type = line.getAttribute 'ltype'
