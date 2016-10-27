@@ -29,6 +29,7 @@ MUTED = [
   'services_bot',
   'shinken-wm',
   'snitch',
+  'stashbot',
   'travis-ci',
   'wikibugs',
   'wikipedia-github',
