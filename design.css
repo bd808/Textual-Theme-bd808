@@ -496,6 +496,7 @@ body .effect[bgcolor-number='15'] {
 }
 /*muted senders*/
 body div.line[ltype~="muted"] {
+  border: none;
   color: #93a1a1;
   font-size: smaller;
 }

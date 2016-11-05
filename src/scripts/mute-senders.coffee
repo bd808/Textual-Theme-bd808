@@ -4,9 +4,12 @@
 
 MUTED = [
   'analytics-logbot',
+  'AntiSpamMeta',
   'arseny92',
+  'CerebrumBot',
   'danny_b',
   'ecmabot-wm',
+  'eir',
   'gh-datavalues',
   'gh-wmde',
   'github',
