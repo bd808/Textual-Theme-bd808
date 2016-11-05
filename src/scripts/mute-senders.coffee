@@ -4,9 +4,9 @@
 
 MUTED = [
   'analytics-logbot',
-  'AntiSpamMeta',
+  'antispammeta',
   'arseny92',
-  'CerebrumBot',
+  'cerebrumbot',
   'danny_b',
   'ecmabot-wm',
   'eir',
