@@ -31,6 +31,7 @@ MUTED = [
   'qa-morebots',
   'services_bot',
   'shinken-wm',
+  'slander',
   'snitch',
   'stashbot',
   'travis-ci',
