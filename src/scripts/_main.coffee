@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 after = (ms, cb) -> setTimeout cb, ms
 every = (ms, cb) -> setInterval cb, ms
@@ -19,27 +19,24 @@ _trigger = (event, args...) ->
 
 # register to receive a message
 Textual.bind = (event, handler) ->
-  _handlers[event] ?= [];
+  _handlers[event] ?= []
   _handlers[event].push handler
   return
 
-Textual.viewFinishedLoading = ->
-  #console.log "viewFinishedLoading"
-  _trigger "viewFinishedLoading"
-  Textual.fadeInLoadingScreen 1.00, 0.95
-  after 500, ->
-    Textual.scrollToBottomOfView()
+Textual.viewBodyDidLoad = ->
+  _trigger "viewBodyDidLoad"
+  Textual.fadeOutLoadingScreen 1.00, 0.95
 
-Textual.viewFinishedReload = ->
-  #console.log "viewFinishedReload"
-  Textual.viewFinishedLoading()
+Textual.messageAddedToView = (line, fromBuffer) ->
+  element = document.getElementById("line-#{line}")
+  return unless element
+  _trigger "messageAddedToView", element
+  ConversationTracking.updateNicknameWithNewMessage element
+  return
 
-Textual.newMessagePostedToView = (lineId) ->
-  line = document.getElementById("line-#{lineId}")
-  line = document.getElementById("line#{lineId}") unless line
-  return unless line
-
-  _trigger "newMessagePostedToView", line
+Textual.nicknameSingleClicked = (e) ->
+  _trigger "nicknameSingleClicked"
+  ConversationTracking.nicknameSingleClickEventCallback e
   return
 
 # vim:sw=2 ts=2 sts=2 et

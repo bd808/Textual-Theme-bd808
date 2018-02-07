@@ -24,7 +24,7 @@
 	<key>Template Engine Versions</key>
 	<dict>
 		<key>default</key>
-		<integer>3</integer>
+		<integer>4</integer>
 	</dict>
 </dict>
 </plist>

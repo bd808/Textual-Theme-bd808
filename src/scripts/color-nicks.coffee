@@ -16,10 +16,10 @@ class NickColorizer
     @css.media = 'all'
 
     # register callbacks
-    Textual.bind "newMessagePostedToView", (line) =>
+    Textual.bind 'messageAddedToView', (line) =>
       @newMessagePostedToView line
 
-    Textual.bind "viewFinishedLoading", =>
+    Textual.bind 'viewBodyDidLoad', =>
       @viewFinishedLoading()
 
   load: ->
@@ -41,13 +41,13 @@ class NickColorizer
     nick = nick.toLowerCase()
 
     # typically ` and _ are used on the end alone
-    nick = nick.replace(/[`_]+$/, "")
+    nick = nick.replace(/[`_]+$/, '')
 
     # remove |<anything> from the end
-    nick = nick.replace(/\|.*$/, "")
+    nick = nick.replace(/\|.*$/, '')
 
     # remove [<anything>] or {<anything>} from the end
-    nick.replace(/^(!\[|!\{)(.*)(\[.*\]|\{.*\})$/, "$2")
+    nick.replace(/^(!\[|!\{)(.*)(\[.*\]|\{.*\})$/, '$2')
 
   getHash: (nick) ->
     cleaned = @cleanNick nick
@@ -103,15 +103,18 @@ class NickColorizer
         nick = false
         if e.className is "inline_nickname"
           nick = e.innerText
-          e.setAttribute "nickname", e.innerText
+          e.setAttribute "data-nickname", e.innerText
         else
-          nick = e.getAttribute "nickname"
+          nick = e.getAttribute "data-nickname"
         @addNick nick if nick
         return
       return
 
   addCss: (nick, color) ->
-    @css.textContent += "\n.sender[nickname='#{nick}'], .inline_nickname[nickname='#{nick}'] { color: #{color} !important; }"
+    @css.textContent +=
+      "\n.sender[data-nickname='#{nick}'], " +
+      ".inline_nickname[data-nickname='#{nick}']" +
+      "{ color: #{color} !important; }"
     return
 
 colorNicks = new NickColorizer()

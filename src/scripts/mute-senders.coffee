@@ -46,7 +46,7 @@ MUTED = [
   'zppix',
 ]
 
-Textual.bind 'newMessagePostedToView', (line) ->
+Textual.bind 'messageAddedToView', (line) ->
   e = line.querySelector('.sender')
   cleanNick = (nick) ->
     # Normalize to lowercase
@@ -60,7 +60,7 @@ Textual.bind 'newMessagePostedToView', (line) ->
     # Strip trailing numbers
     .replace(/\d+$/, "")
 
-  if (e && cleanNick( e.getAttribute('nickname') ) in MUTED)
-    type = line.getAttribute 'ltype'
-    line.setAttribute 'ltype', "#{type} muted"
+  if (e && cleanNick( e.getAttribute('data-nickname') ) in MUTED)
+    type = line.getAttribute 'data-line-type'
+    line.setAttribute 'data-line-type', "#{type} muted"
   return

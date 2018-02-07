@@ -18,7 +18,7 @@ body {
   z-index:100;
 }
 
-body div#body_home {
+body div#body {
   -webkit-transition:opacity 0.8s linear;
   bottom:0;
   left:0;
@@ -30,12 +30,12 @@ body div#body_home {
   z-index:100;
 }
 
-body[viewtype="channel"] div#body_home {
+body[data-view-type="channel"] div#body {
   max-height:96.5%;
 }
 
 /* Loading Screen */
-body div#loading_screen {
+body div#loadingScreen {
   -webkit-transition:opacity 0.8s linear;
   background:@base2;
   border:1px solid @base01;
@@ -53,7 +53,7 @@ body div#loading_screen {
 }
 
 /* Topic Bar */
-#topic_bar {
+#topicBar {
   -webkit-transition:opacity 0.8s linear;
   background:@base1;
   border-bottom:1px solid @base02;
@@ -137,9 +137,9 @@ body .line {
 }
 
 /* NOTICE/CTCP/WALLOPS */
-body div.line[ltype~="ctcp"],
-body div.line[ltype~="notice"],
-body div.line[ltype~="wallops"] {
+body div.line[data-line-type~="ctcp"],
+body div.line[data-line-type~="notice"],
+body div.line[data-line-type~="wallops"] {
   background:@base2;
   border:1px solid @blue;
   border-width:1px 0 1px 0;
@@ -149,7 +149,7 @@ body div.line[ltype~="wallops"] {
   }
 }
 .consecutive-type(@type) {
-  body div.line[ltype~="@{type}"] + div.line[ltype~="@{type}"] {
+  body div.line[data-line-type~="@{type}"] + div.line[data-line-type~="@{type}"] {
     border-top:none;
   }
 }
@@ -158,7 +158,7 @@ body div.line[ltype~="wallops"] {
 .consecutive-type(wallops);
 
 /* PRIVMSG */
-body div.line[ltype~="privmsg"] {
+body div.line[data-line-type~="privmsg"] {
   .message {
     color:@base00;
   }
@@ -167,7 +167,7 @@ body div.line[ltype~="privmsg"] {
   }
 }
 
-body div.line[highlight="true"] {
+body div.line[data-highlight="true"] {
   font-weight:normal;
   border:1px solid @yellow;
   border-width:1px 0;
@@ -175,7 +175,7 @@ body div.line[highlight="true"] {
 }
 
 /* ACTION */
-body div.line[ltype~="action"] {
+body div.line[data-line-type~="action"] {
   .message {
     font-style:italic;
   }
@@ -188,52 +188,52 @@ body div.line[ltype~="action"] {
 }
 
 /* GENERAL EVENT */
-body div.event[ltype~="join"],
-body div.event[ltype~="part"],
-body div.event[ltype~="kick"],
-body div.event[ltype~="quit"],
-body div.event[ltype~="kill"],
-body div.event[ltype~="nick"],
-body div.event[ltype~="mode"],
-body div.event[ltype~="topic"],
-body div.event[ltype~="website"] {
+body div.event[data-line-type~="join"],
+body div.event[data-line-type~="part"],
+body div.event[data-line-type~="kick"],
+body div.event[data-line-type~="quit"],
+body div.event[data-line-type~="kill"],
+body div.event[data-line-type~="nick"],
+body div.event[data-line-type~="mode"],
+body div.event[data-line-type~="topic"],
+body div.event[data-line-type~="website"] {
   color:@base1;
   font-size:smaller;
   .time {
     padding-left:1.2em;
   }
 }
-body div.event[ltype~="join"],
-body div.event[ltype~="part"],
-body div.event[ltype~="quit"],
-body div.event[ltype~="nick"] {
+body div.event[data-line-type~="join"],
+body div.event[data-line-type~="part"],
+body div.event[data-line-type~="quit"],
+body div.event[data-line-type~="nick"] {
   .sender,
   .message {
     font-style:italic;
   }
 }
 
-body div.event[ltype~="join"] .message:before {
+body div.event[data-line-type~="join"] .message:before {
   content:"⇀";
   color:@green;
 }
 
-body div.event[ltype~="kick"] .message:before,
-body div.event[ltype~="part"] .message:before,
-body div.event[ltype~="quit"] .message:before {
+body div.event[data-line-type~="kick"] .message:before,
+body div.event[data-line-type~="part"] .message:before,
+body div.event[data-line-type~="quit"] .message:before {
   content:"↽";
   color:@magenta;
 }
 
-body div.event[ltype~="nick"] .message:before {
+body div.event[data-line-type~="nick"] .message:before {
   content:"○";
   color:@cyan;
 }
 
 /* DEBUG/INVITE */
-body div.event[ltype~="invite"],
-body div.event[ltype~="debug"],
-body div.event[ltype~="rawhtml"] {
+body div.event[data-line-type~="invite"],
+body div.event[data-line-type~="debug"],
+body div.event[data-line-type~="rawhtml"] {
   background:@base3;
   border:1px solid @base2;
   border-width:1px 0;
@@ -242,13 +242,13 @@ body div.event[ltype~="rawhtml"] {
 /* Message of the Day (MOTD) */
 /* 720, 721, 722 are used by ShadowIRCd for Oper MOTD. */
 /* 372, 375, 376 are normal MOTD shared by several IRCds. */
-body div.event[command="375"],
-body div.event[command="720"] {
+body div.event[data-command="375"],
+body div.event[data-command="720"] {
   /* Start MOTD. */
   border-bottom:none;
 }
-body div.event[command="372"],
-body div.event[command="721"] {
+body div.event[data-command="372"],
+body div.event[data-command="721"] {
   border:none;
   .time {
     display:none;
@@ -257,17 +257,17 @@ body div.event[command="721"] {
     padding-left:2em;
   }
 }
-body div.event[command="376"],
-body div.event[command="722"] {
+body div.event[data-command="376"],
+body div.event[data-command="722"] {
   /* End MOTD. */
   border-top:none;
 }
 
 /* Help */
-body div.event[command="704"] {
+body div.event[data-command="704"] {
   border-bottom:none;
 }
-body div.event[command="705"] {
+body div.event[data-command="705"] {
   border:none;
   .time {
     display:none;
@@ -276,17 +276,17 @@ body div.event[command="705"] {
     padding-left:2em;
   }
 }
-body div.event[command="706"] {
+body div.event[data-command="706"] {
   border-top:none;
 }
 
 /* Local Debug */
-body div.event[command~="-100"] + div.event[command~="-100"] {
+body div.event[data-command~="-100"] + div.event[data-command~="-100"] {
   border-top:none;
 }
 
 /* Nickname Colors */
-.sender[mtype~="myself"] {
+.sender[data-member-type~="myself"] {
   color:@base01;
   font-weight:bold;
 }
@@ -294,8 +294,8 @@ body div.event[command~="-100"] + div.event[command~="-100"] {
 // generate a whole lot of nickname color rules
 // see @nick_[0..31] in colors.less
 .senderX (@index) when (@index > -1) {
-  .sender[mtype~="normal"][colornumber="@{index}"],
-  inline_nickname[colornumber="@{index}"] {
+  .sender[data-member-type~="normal"][data-foreground-color="@{index}"],
+  inline_nickname[data-foreground-color="@{index}"] {
     @n: "nick_@{index}";
     color: @@n;
   }
@@ -306,42 +306,42 @@ body div.event[command~="-100"] + div.event[command~="-100"] {
 
 /* mIRC color codes */
 body {
-  .effect[color-number='0'] { color: @base3; }
-  .effect[color-number='1'] { color: @base03; }
-  .effect[color-number='2'] { color: @green; }
-  .effect[color-number='3'] { color: @blue; }
-  .effect[color-number='4'] { color: @red; }
-  .effect[color-number='5'] { color: #7f0000; }
-  .effect[color-number='6'] { color: @violet; }
-  .effect[color-number='7'] { color: @orange; }
-  .effect[color-number='8'] { color: @yellow; }
-  .effect[color-number='9'] { color: @green; }
-  .effect[color-number='10'] { color: @cyan; }
-  .effect[color-number='11'] { color: @cyan; }
-  .effect[color-number='12'] { color: @blue; }
-  .effect[color-number='13'] { color: @magenta; }
-  .effect[color-number='14'] { color: @base00; }
-  .effect[color-number='15'] { color: @base1; }
-  .effect[bgcolor-number='0'] { background-color: @base3; }
-  .effect[bgcolor-number='1'] { background-color: @base03; }
-  .effect[bgcolor-number='2'] { background-color: @green; }
-  .effect[bgcolor-number='3'] { background-color: @blue; }
-  .effect[bgcolor-number='4'] { background-color: @red; }
-  .effect[bgcolor-number='5'] { background-color: #7f0000; }
-  .effect[bgcolor-number='6'] { background-color: @violet; }
-  .effect[bgcolor-number='7'] { background-color: @orange; }
-  .effect[bgcolor-number='8'] { background-color: @yellow; }
-  .effect[bgcolor-number='9'] { background-color: @green; }
-  .effect[bgcolor-number='10'] { background-color: @cyan; }
-  .effect[bgcolor-number='11'] { background-color: @cyan; }
-  .effect[bgcolor-number='12'] { background-color: @blue; }
-  .effect[bgcolor-number='13'] { background-color: @magenta; }
-  .effect[bgcolor-number='14'] { background-color: @base00; }
-  .effect[bgcolor-number='15'] { background-color: @base1; }
+  .effect[data-foreground-color='0'] { color: @base3; }
+  .effect[data-foreground-color='1'] { color: @base03; }
+  .effect[data-foreground-color='2'] { color: @green; }
+  .effect[data-foreground-color='3'] { color: @blue; }
+  .effect[data-foreground-color='4'] { color: @red; }
+  .effect[data-foreground-color='5'] { color: #7f0000; }
+  .effect[data-foreground-color='6'] { color: @violet; }
+  .effect[data-foreground-color='7'] { color: @orange; }
+  .effect[data-foreground-color='8'] { color: @yellow; }
+  .effect[data-foreground-color='9'] { color: @green; }
+  .effect[data-foreground-color='10'] { color: @cyan; }
+  .effect[data-foreground-color='11'] { color: @cyan; }
+  .effect[data-foreground-color='12'] { color: @blue; }
+  .effect[data-foreground-color='13'] { color: @magenta; }
+  .effect[data-foreground-color='14'] { color: @base00; }
+  .effect[data-foreground-color='15'] { color: @base1; }
+  .effect[data-background-color='0'] { background-color: @base3; }
+  .effect[data-background-color='1'] { background-color: @base03; }
+  .effect[data-background-color='2'] { background-color: @green; }
+  .effect[data-background-color='3'] { background-color: @blue; }
+  .effect[data-background-color='4'] { background-color: @red; }
+  .effect[data-background-color='5'] { background-color: #7f0000; }
+  .effect[data-background-color='6'] { background-color: @violet; }
+  .effect[data-background-color='7'] { background-color: @orange; }
+  .effect[data-background-color='8'] { background-color: @yellow; }
+  .effect[data-background-color='9'] { background-color: @green; }
+  .effect[data-background-color='10'] { background-color: @cyan; }
+  .effect[data-background-color='11'] { background-color: @cyan; }
+  .effect[data-background-color='12'] { background-color: @blue; }
+  .effect[data-background-color='13'] { background-color: @magenta; }
+  .effect[data-background-color='14'] { background-color: @base00; }
+  .effect[data-background-color='15'] { background-color: @base1; }
 }
 
 /*muted senders*/
-body div.line[ltype~="muted"] {
+body div.line[data-line-type~="muted"] {
   border:none;
   color:@base1;
   font-size:smaller;

@@ -40,28 +40,24 @@
     _handlers[event].push(handler);
   };
 
-  Textual.viewFinishedLoading = function() {
-    _trigger("viewFinishedLoading");
-    Textual.fadeInLoadingScreen(1.00, 0.95);
-    return after(500, function() {
-      return Textual.scrollToBottomOfView();
-    });
+  Textual.viewBodyDidLoad = function() {
+    _trigger("viewBodyDidLoad");
+    return Textual.fadeOutLoadingScreen(1.00, 0.95);
   };
 
-  Textual.viewFinishedReload = function() {
-    return Textual.viewFinishedLoading();
-  };
-
-  Textual.newMessagePostedToView = function(lineId) {
-    var line;
-    line = document.getElementById("line-" + lineId);
-    if (!line) {
-      line = document.getElementById("line" + lineId);
-    }
-    if (!line) {
+  Textual.messageAddedToView = function(line, fromBuffer) {
+    var element;
+    element = document.getElementById("line-" + line);
+    if (!element) {
       return;
     }
-    _trigger("newMessagePostedToView", line);
+    _trigger("messageAddedToView", element);
+    ConversationTracking.updateNicknameWithNewMessage(element);
+  };
+
+  Textual.nicknameSingleClicked = function(e) {
+    _trigger("nicknameSingleClicked");
+    ConversationTracking.nicknameSingleClickEventCallback(e);
   };
 
 }).call(this);
@@ -73,7 +69,7 @@
 
   HTML_BUG = '<a href="https://bugzilla.wikimedia.org/$1">$&</a>';
 
-  Textual.bind('newMessagePostedToView', function(line) {
+  Textual.bind('messageAddedToView', function(line) {
     if (RE_BUG.test(line.innerHTML)) {
       return line.innerHTML = line.innerHTML.replace(RE_BUG, HTML_BUG);
     }
@@ -93,10 +89,10 @@
       this.css.id = 'textual-colorNicks';
       this.css.type = 'text/css';
       this.css.media = 'all';
-      Textual.bind("newMessagePostedToView", function(line) {
+      Textual.bind('messageAddedToView', function(line) {
         return _this.newMessagePostedToView(line);
       });
-      Textual.bind("viewFinishedLoading", function() {
+      Textual.bind('viewBodyDidLoad', function() {
         return _this.viewFinishedLoading();
       });
     }
@@ -117,9 +113,9 @@
 
     NickColorizer.prototype.cleanNick = function(nick) {
       nick = nick.toLowerCase();
-      nick = nick.replace(/[`_]+$/, "");
-      nick = nick.replace(/\|.*$/, "");
-      return nick.replace(/^(!\[|!\{)(.*)(\[.*\]|\{.*\})$/, "$2");
+      nick = nick.replace(/[`_]+$/, '');
+      nick = nick.replace(/\|.*$/, '');
+      return nick.replace(/^(!\[|!\{)(.*)(\[.*\]|\{.*\})$/, '$2');
     };
 
     NickColorizer.prototype.getHash = function(nick) {
@@ -177,9 +173,9 @@
         nick = false;
         if (e.className === "inline_nickname") {
           nick = e.innerText;
-          e.setAttribute("nickname", e.innerText);
+          e.setAttribute("data-nickname", e.innerText);
         } else {
-          nick = e.getAttribute("nickname");
+          nick = e.getAttribute("data-nickname");
         }
         if (nick) {
           _this.addNick(nick);
@@ -193,7 +189,7 @@
     };
 
     NickColorizer.prototype.addCss = function(nick, color) {
-      this.css.textContent += "\n.sender[nickname='" + nick + "'], .inline_nickname[nickname='" + nick + "'] { color: " + color + " !important; }";
+      this.css.textContent += ("\n.sender[data-nickname='" + nick + "'], ") + (".inline_nickname[data-nickname='" + nick + "']") + ("{ color: " + color + " !important; }");
     };
 
     return NickColorizer;
@@ -211,7 +207,7 @@
 
   HTML_GERRIT = '<a href="https://gerrit.wikimedia.org/r/?#q,$1,n,z">$&</a>';
 
-  Textual.bind('newMessagePostedToView', function(line) {
+  Textual.bind('messageAddedToView', function(line) {
     if (RE_GERRIT.test(line.innerHTML)) {
       return line.innerHTML = line.innerHTML.replace(RE_GERRIT, HTML_GERRIT);
     }
@@ -225,15 +221,15 @@
 
   MUTED = ['analytics-logbot', 'antispammeta', 'arseny', 'cerebrumbot', 'cp', 'cyberpower', 'danny_b', 'ecmabot-wm', 'eir', 'gh-datavalues', 'gh-wmde', 'github', 'github-wmde', 'grrrit-wm', 'guest', 'icinga-wm', 'ircnotifier', 'justberry', 'krrrit-wm', 'labs-morebots', 'libel', 'mw-jenkinsbot', 'paladox', 'phabot', 'phawikibugs', 'phawkes', 'pywikibugs', 'services_bot', 'shinken-wm', 'slander', 'snitch', 'stashbot', 'travis-ci', 'wikibugs', 'wikipedia-github', 'wikiphabot', 'wm-bot', 'wm-labs-meetbot', 'wmf-insecte', 'wmf-selenium-bot', 'zppix'];
 
-  Textual.bind('newMessagePostedToView', function(line) {
+  Textual.bind('messageAddedToView', function(line) {
     var cleanNick, e, type, _ref;
     e = line.querySelector('.sender');
     cleanNick = function(nick) {
       return nick.toLowerCase().replace(/[`_]+$/, "").replace(/\|.*$/, "").replace(/^(!\[|!\{)(.*)(\[.*\]|\{.*\})$/, "$2").replace(/\d+$/, "");
     };
-    if (e && (_ref = cleanNick(e.getAttribute('nickname')), __indexOf.call(MUTED, _ref) >= 0)) {
-      type = line.getAttribute('ltype');
-      line.setAttribute('ltype', "" + type + " muted");
+    if (e && (_ref = cleanNick(e.getAttribute('data-nickname')), __indexOf.call(MUTED, _ref) >= 0)) {
+      type = line.getAttribute('data-line-type');
+      line.setAttribute('data-line-type', "" + type + " muted");
     }
   });
 
@@ -246,7 +242,7 @@
 
   HTML_PHAB = '$1<a href="https://phabricator.wikimedia.org/$2">$2</a>';
 
-  Textual.bind('newMessagePostedToView', function(line) {
+  Textual.bind('messageAddedToView', function(line) {
     var e, _i, _len, _ref, _results,
       _this = this;
     if (RE_PHAB.test(line.innerHTML)) {
