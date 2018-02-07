@@ -24,13 +24,13 @@ recompile:
 
 Credits
 -------
-* Work started from the Simplified Light theme shipped with [Textual].
-* Color scheme based on the wonderful [Solarized] color pallet.
+* Work started from the Simplified Light theme shipped with [Textual][].
+* Color scheme based on the wonderful [Solarized][] color pallet.
 * Other inspirations taken from:
-  * [hbang/Simplified-Light-Modifications]
-  * [hbang/Sapientia-Modifications]
+  * [hbang/Simplified-Light-Modifications][]
+  * [hbang/Sapientia-Modifications][]
 
---
+
 [Textual]: http://www.codeux.com/textual/
 [Solarized]: http://ethanschoonover.com/solarized
 [hbang/Simplified-Light-Modifications]: https://github.com/hbang/Simplified-Light-Modifications
