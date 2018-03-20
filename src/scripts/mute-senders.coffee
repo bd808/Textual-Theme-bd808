@@ -24,6 +24,7 @@ MUTED = [
   'krrrit-wm',
   'labs-morebots',
   'libel',
+  'librenms-wmf',
   'mw-jenkinsbot',
   'paladox',
   'phabot',
