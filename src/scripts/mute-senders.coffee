@@ -6,6 +6,7 @@ MUTED = [
   'analytics-logbot',
   'antispammeta',
   'arseny',
+  'AsimovBot',
   'cerebrumbot',
   'cp',
   'cyberpower',
