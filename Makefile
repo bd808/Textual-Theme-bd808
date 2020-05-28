@@ -4,7 +4,7 @@ LESSC = lessc
 TEXTUAL_DIR = $(HOME)/Library/Group\ Containers/com.codeux.apps.textual/Library/Application\ Support/Textual/Styles
 
 RSYNC_FLAGS = --exclude ".git" --exclude ".DS_Store" --exclude "Makefile" --exclude "*.sw*" --exclude "src" --exclude "build" --exclude ".gitignore"
-LESSC_FLAGS = --no-ie-compat -O2 --strict-imports
+LESSC_FLAGS = --strict-imports
 
 JSSRC = $(wildcard src/scripts/*.coffee)
 JSOBJ = ${JSSRC:src/scripts/%.coffee=build/%.js}

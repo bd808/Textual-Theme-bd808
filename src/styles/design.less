@@ -1,11 +1,16 @@
 @import "colors.less";
 
+:root {
+  supported-color-schemes: dark;
+}
+
 /* Basic Body Structure */
 * {
   font-size:100%;
   margin:0;
   padding:0;
   word-wrap:break-word;
+  word-break: break-word;
 }
 
 body {
@@ -156,6 +161,20 @@ body div.line[data-line-type~="wallops"] {
 .consecutive-type(cctp);
 .consecutive-type(notice);
 .consecutive-type(wallops);
+
+/* Selected User Messages */
+.sender {
+  cursor: pointer;
+}
+
+div.line[data-line-type="privmsg"]:not(.selectedUser),
+div.line[data-line-type="action"]:not(.selectedUser) {
+  transition: background-color 0.5s;
+}
+div.line.selectedUser[data-highlight="false"] {
+  transition: background-color 0.5s;
+  background-color: rgba(42, 161, 152, 0.25) !important;
+}
 
 /* PRIVMSG */
 body div.line[data-line-type~="privmsg"] {

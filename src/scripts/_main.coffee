@@ -8,13 +8,14 @@ _handlers = {}
 
 # call handlers for a message
 _trigger = (event, args...) ->
-  for handler in _handlers[event]
-    do (handler) ->
-      try
-        handler args...
-      catch err
-        console.log "Error handling #{event} with #{handler}: #{err}"
-      return
+  if _handlers[event]
+    for handler in _handlers[event]
+      do (handler) ->
+        try
+          handler args...
+        catch err
+          console.log "Error handling #{event} with #{handler}: #{err}"
+        return
   return
 
 # register to receive a message

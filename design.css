@@ -1,13 +1,17 @@
+:root {
+  supported-color-schemes: dark;
+}
 /* Basic Body Structure */
 * {
   font-size: 100%;
   margin: 0;
   padding: 0;
   word-wrap: break-word;
+  word-break: break-word;
 }
 body {
-  background-color: #fdf6e3;
-  color: #657b83;
+  background-color: #FDF6E3;
+  color: #657B83;
   font: 10pt/1.1em "Dejavu Sans Mono", fixed;
   height: 100%;
   overflow-x: hidden;
@@ -32,8 +36,8 @@ body[data-view-type="channel"] div#body {
 /* Loading Screen */
 body div#loadingScreen {
   -webkit-transition: opacity 0.8s linear;
-  background: #eee8d5;
-  border: 1px solid #586e75;
+  background: #EEE8D5;
+  border: 1px solid #586E75;
   border-radius: 5px;
   font-size: 18px;
   height: 21px;
@@ -49,14 +53,14 @@ body div#loadingScreen {
 /* Topic Bar */
 #topicBar {
   -webkit-transition: opacity 0.8s linear;
-  background: #93a1a1;
+  background: #93A1A1;
   border-bottom: 1px solid #073642;
-  box-shadow: 0 1px 5px #586e75;
-  color: #586e75;
+  box-shadow: 0 1px 5px #586E75;
+  color: #586E75;
   left: 0;
   opacity: 0;
   overflow: hidden;
-  padding: .3em .5em;
+  padding: 0.3em 0.5em;
   position: fixed;
   right: 0;
   text-overflow: ellipsis;
@@ -67,14 +71,14 @@ body div#loadingScreen {
 #topicBar:hover {
   /* Topic bar hover additions contributed with permission from:
     <https://github.com/hbang/Simplified-Light-Modifications> */
-  color: #eee8d5;
+  color: #EEE8D5;
   overflow: visible;
   white-space: normal;
 }
 /* Remember Line */
 #mark {
   margin-top: -1px;
-  border-bottom: 2px dashed #2aa198;
+  border-bottom: 2px dashed #2AA198;
   -webkit-transition: border 0.2s linear;
 }
 /* Historic Line */
@@ -83,7 +87,7 @@ body div#loadingScreen {
 }
 /* Time */
 .time {
-  color: #93a1a1;
+  color: #93A1A1;
   white-space: nowrap;
 }
 /* Encryption Lock */
@@ -123,14 +127,14 @@ body .line {
 body div.line[data-line-type~="ctcp"],
 body div.line[data-line-type~="notice"],
 body div.line[data-line-type~="wallops"] {
-  background: #eee8d5;
-  border: 1px solid #268bd2;
+  background: #EEE8D5;
+  border: 1px solid #268BD2;
   border-width: 1px 0 1px 0;
 }
 body div.line[data-line-type~="ctcp"] .sender,
 body div.line[data-line-type~="notice"] .sender,
 body div.line[data-line-type~="wallops"] .sender {
-  color: #d30102;
+  color: #D30102;
   font-weight: 700;
 }
 body div.line[data-line-type~="cctp"] + div.line[data-line-type~="cctp"] {
@@ -142,18 +146,30 @@ body div.line[data-line-type~="notice"] + div.line[data-line-type~="notice"] {
 body div.line[data-line-type~="wallops"] + div.line[data-line-type~="wallops"] {
   border-top: none;
 }
+/* Selected User Messages */
+.sender {
+  cursor: pointer;
+}
+div.line[data-line-type="privmsg"]:not(.selectedUser),
+div.line[data-line-type="action"]:not(.selectedUser) {
+  transition: background-color 0.5s;
+}
+div.line.selectedUser[data-highlight="false"] {
+  transition: background-color 0.5s;
+  background-color: rgba(42, 161, 152, 0.25) !important;
+}
 /* PRIVMSG */
 body div.line[data-line-type~="privmsg"] .message {
-  color: #657b83;
+  color: #657B83;
 }
 body div.line[data-line-type~="privmsg"] .sender {
   white-space: pre-wrap;
 }
 body div.line[data-highlight="true"] {
   font-weight: normal;
-  border: 1px solid #b58900;
+  border: 1px solid #B58900;
   border-width: 1px 0;
-  background-color: #eee8d5 !important;
+  background-color: #EEE8D5 !important;
 }
 /* ACTION */
 body div.line[data-line-type~="action"] .message {
@@ -173,7 +189,7 @@ body div.event[data-line-type~="nick"],
 body div.event[data-line-type~="mode"],
 body div.event[data-line-type~="topic"],
 body div.event[data-line-type~="website"] {
-  color: #93a1a1;
+  color: #93A1A1;
   font-size: smaller;
 }
 body div.event[data-line-type~="join"] .time,
@@ -205,18 +221,18 @@ body div.event[data-line-type~="kick"] .message:before,
 body div.event[data-line-type~="part"] .message:before,
 body div.event[data-line-type~="quit"] .message:before {
   content: "↽";
-  color: #d33682;
+  color: #D33682;
 }
 body div.event[data-line-type~="nick"] .message:before {
   content: "○";
-  color: #2aa198;
+  color: #2AA198;
 }
 /* DEBUG/INVITE */
 body div.event[data-line-type~="invite"],
 body div.event[data-line-type~="debug"],
 body div.event[data-line-type~="rawhtml"] {
-  background: #fdf6e3;
-  border: 1px solid #eee8d5;
+  background: #FDF6E3;
+  border: 1px solid #EEE8D5;
   border-width: 1px 0;
 }
 /* Message of the Day (MOTD) */
@@ -266,7 +282,7 @@ body div.event[data-command~="-100"] + div.event[data-command~="-100"] {
 }
 /* Nickname Colors */
 .sender[data-member-type~="myself"] {
-  color: #586e75;
+  color: #586E75;
   font-weight: bold;
 }
 .sender[data-member-type~="normal"][data-foreground-color="31"],
@@ -275,31 +291,31 @@ inline_nickname[data-foreground-color="31"] {
 }
 .sender[data-member-type~="normal"][data-foreground-color="30"],
 inline_nickname[data-foreground-color="30"] {
-  color: #2aa198;
+  color: #2AA198;
 }
 .sender[data-member-type~="normal"][data-foreground-color="29"],
 inline_nickname[data-foreground-color="29"] {
-  color: #268bd2;
+  color: #268BD2;
 }
 .sender[data-member-type~="normal"][data-foreground-color="28"],
 inline_nickname[data-foreground-color="28"] {
-  color: #6c71c4;
+  color: #6C71C4;
 }
 .sender[data-member-type~="normal"][data-foreground-color="27"],
 inline_nickname[data-foreground-color="27"] {
-  color: #d33682;
+  color: #D33682;
 }
 .sender[data-member-type~="normal"][data-foreground-color="26"],
 inline_nickname[data-foreground-color="26"] {
-  color: #d30102;
+  color: #D30102;
 }
 .sender[data-member-type~="normal"][data-foreground-color="25"],
 inline_nickname[data-foreground-color="25"] {
-  color: #cb4b16;
+  color: #CB4B16;
 }
 .sender[data-member-type~="normal"][data-foreground-color="24"],
 inline_nickname[data-foreground-color="24"] {
-  color: #b58900;
+  color: #B58900;
 }
 .sender[data-member-type~="normal"][data-foreground-color="23"],
 inline_nickname[data-foreground-color="23"] {
@@ -307,31 +323,31 @@ inline_nickname[data-foreground-color="23"] {
 }
 .sender[data-member-type~="normal"][data-foreground-color="22"],
 inline_nickname[data-foreground-color="22"] {
-  color: #2aa198;
+  color: #2AA198;
 }
 .sender[data-member-type~="normal"][data-foreground-color="21"],
 inline_nickname[data-foreground-color="21"] {
-  color: #268bd2;
+  color: #268BD2;
 }
 .sender[data-member-type~="normal"][data-foreground-color="20"],
 inline_nickname[data-foreground-color="20"] {
-  color: #6c71c4;
+  color: #6C71C4;
 }
 .sender[data-member-type~="normal"][data-foreground-color="19"],
 inline_nickname[data-foreground-color="19"] {
-  color: #d33682;
+  color: #D33682;
 }
 .sender[data-member-type~="normal"][data-foreground-color="18"],
 inline_nickname[data-foreground-color="18"] {
-  color: #d30102;
+  color: #D30102;
 }
 .sender[data-member-type~="normal"][data-foreground-color="17"],
 inline_nickname[data-foreground-color="17"] {
-  color: #cb4b16;
+  color: #CB4B16;
 }
 .sender[data-member-type~="normal"][data-foreground-color="16"],
 inline_nickname[data-foreground-color="16"] {
-  color: #b58900;
+  color: #B58900;
 }
 .sender[data-member-type~="normal"][data-foreground-color="15"],
 inline_nickname[data-foreground-color="15"] {
@@ -339,31 +355,31 @@ inline_nickname[data-foreground-color="15"] {
 }
 .sender[data-member-type~="normal"][data-foreground-color="14"],
 inline_nickname[data-foreground-color="14"] {
-  color: #2aa198;
+  color: #2AA198;
 }
 .sender[data-member-type~="normal"][data-foreground-color="13"],
 inline_nickname[data-foreground-color="13"] {
-  color: #268bd2;
+  color: #268BD2;
 }
 .sender[data-member-type~="normal"][data-foreground-color="12"],
 inline_nickname[data-foreground-color="12"] {
-  color: #6c71c4;
+  color: #6C71C4;
 }
 .sender[data-member-type~="normal"][data-foreground-color="11"],
 inline_nickname[data-foreground-color="11"] {
-  color: #d33682;
+  color: #D33682;
 }
 .sender[data-member-type~="normal"][data-foreground-color="10"],
 inline_nickname[data-foreground-color="10"] {
-  color: #d30102;
+  color: #D30102;
 }
 .sender[data-member-type~="normal"][data-foreground-color="9"],
 inline_nickname[data-foreground-color="9"] {
-  color: #cb4b16;
+  color: #CB4B16;
 }
 .sender[data-member-type~="normal"][data-foreground-color="8"],
 inline_nickname[data-foreground-color="8"] {
-  color: #b58900;
+  color: #B58900;
 }
 .sender[data-member-type~="normal"][data-foreground-color="7"],
 inline_nickname[data-foreground-color="7"] {
@@ -371,141 +387,141 @@ inline_nickname[data-foreground-color="7"] {
 }
 .sender[data-member-type~="normal"][data-foreground-color="6"],
 inline_nickname[data-foreground-color="6"] {
-  color: #2aa198;
+  color: #2AA198;
 }
 .sender[data-member-type~="normal"][data-foreground-color="5"],
 inline_nickname[data-foreground-color="5"] {
-  color: #268bd2;
+  color: #268BD2;
 }
 .sender[data-member-type~="normal"][data-foreground-color="4"],
 inline_nickname[data-foreground-color="4"] {
-  color: #6c71c4;
+  color: #6C71C4;
 }
 .sender[data-member-type~="normal"][data-foreground-color="3"],
 inline_nickname[data-foreground-color="3"] {
-  color: #d33682;
+  color: #D33682;
 }
 .sender[data-member-type~="normal"][data-foreground-color="2"],
 inline_nickname[data-foreground-color="2"] {
-  color: #d30102;
+  color: #D30102;
 }
 .sender[data-member-type~="normal"][data-foreground-color="1"],
 inline_nickname[data-foreground-color="1"] {
-  color: #cb4b16;
+  color: #CB4B16;
 }
 .sender[data-member-type~="normal"][data-foreground-color="0"],
 inline_nickname[data-foreground-color="0"] {
-  color: #b58900;
+  color: #B58900;
 }
 /* mIRC color codes */
 body .effect[data-foreground-color='0'] {
-  color: #fdf6e3;
+  color: #FDF6E3;
 }
 body .effect[data-foreground-color='1'] {
-  color: #002b36;
+  color: #002B36;
 }
 body .effect[data-foreground-color='2'] {
   color: #859900;
 }
 body .effect[data-foreground-color='3'] {
-  color: #268bd2;
+  color: #268BD2;
 }
 body .effect[data-foreground-color='4'] {
-  color: #d30102;
+  color: #D30102;
 }
 body .effect[data-foreground-color='5'] {
   color: #7f0000;
 }
 body .effect[data-foreground-color='6'] {
-  color: #6c71c4;
+  color: #6C71C4;
 }
 body .effect[data-foreground-color='7'] {
-  color: #cb4b16;
+  color: #CB4B16;
 }
 body .effect[data-foreground-color='8'] {
-  color: #b58900;
+  color: #B58900;
 }
 body .effect[data-foreground-color='9'] {
   color: #859900;
 }
 body .effect[data-foreground-color='10'] {
-  color: #2aa198;
+  color: #2AA198;
 }
 body .effect[data-foreground-color='11'] {
-  color: #2aa198;
+  color: #2AA198;
 }
 body .effect[data-foreground-color='12'] {
-  color: #268bd2;
+  color: #268BD2;
 }
 body .effect[data-foreground-color='13'] {
-  color: #d33682;
+  color: #D33682;
 }
 body .effect[data-foreground-color='14'] {
-  color: #657b83;
+  color: #657B83;
 }
 body .effect[data-foreground-color='15'] {
-  color: #93a1a1;
+  color: #93A1A1;
 }
 body .effect[data-background-color='0'] {
-  background-color: #fdf6e3;
+  background-color: #FDF6E3;
 }
 body .effect[data-background-color='1'] {
-  background-color: #002b36;
+  background-color: #002B36;
 }
 body .effect[data-background-color='2'] {
   background-color: #859900;
 }
 body .effect[data-background-color='3'] {
-  background-color: #268bd2;
+  background-color: #268BD2;
 }
 body .effect[data-background-color='4'] {
-  background-color: #d30102;
+  background-color: #D30102;
 }
 body .effect[data-background-color='5'] {
   background-color: #7f0000;
 }
 body .effect[data-background-color='6'] {
-  background-color: #6c71c4;
+  background-color: #6C71C4;
 }
 body .effect[data-background-color='7'] {
-  background-color: #cb4b16;
+  background-color: #CB4B16;
 }
 body .effect[data-background-color='8'] {
-  background-color: #b58900;
+  background-color: #B58900;
 }
 body .effect[data-background-color='9'] {
   background-color: #859900;
 }
 body .effect[data-background-color='10'] {
-  background-color: #2aa198;
+  background-color: #2AA198;
 }
 body .effect[data-background-color='11'] {
-  background-color: #2aa198;
+  background-color: #2AA198;
 }
 body .effect[data-background-color='12'] {
-  background-color: #268bd2;
+  background-color: #268BD2;
 }
 body .effect[data-background-color='13'] {
-  background-color: #d33682;
+  background-color: #D33682;
 }
 body .effect[data-background-color='14'] {
-  background-color: #657b83;
+  background-color: #657B83;
 }
 body .effect[data-background-color='15'] {
-  background-color: #93a1a1;
+  background-color: #93A1A1;
 }
 /*muted senders*/
 body div.line[data-line-type~="muted"] {
   border: none;
-  color: #93a1a1;
+  color: #93A1A1;
   font-size: smaller;
 }
 body div.line[data-line-type~="muted"] .time {
-  padding-left: .75em;
+  padding-left: 0.75em;
 }
 body div.line[data-line-type~="muted"] .sender {
   color: inherit !important;
 }
 body div.line[data-line-type~="muted"] .message {
-  color: #93a1a1;
+  color: #93A1A1;
 }
