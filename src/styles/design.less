@@ -167,8 +167,8 @@ body div.line[data-line-type~="wallops"] {
   cursor: pointer;
 }
 
-div.line[data-line-type="privmsg"]:not(.selectedUser),
-div.line[data-line-type="action"]:not(.selectedUser) {
+div.line[data-line-type~="privmsg"]:not(.selectedUser),
+div.line[data-line-type~="action"]:not(.selectedUser) {
   transition: background-color 0.5s;
 }
 div.line.selectedUser[data-highlight="false"] {
