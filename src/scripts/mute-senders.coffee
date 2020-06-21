@@ -27,6 +27,7 @@ MUTED = [
   'libel',
   'librenms-wmf',
   'mw-jenkinsbot',
+  'nokib',
   'paladox',
   'phabot',
   'phawikibugs',
