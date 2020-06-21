@@ -150,11 +150,12 @@ body div.line[data-line-type~="wallops"] + div.line[data-line-type~="wallops"] {
 .sender {
   cursor: pointer;
 }
-div.line[data-line-type="privmsg"]:not(.selectedUser),
-div.line[data-line-type="action"]:not(.selectedUser) {
+div.line[data-line-type~="privmsg"]:not(.selectedUser),
+div.line[data-line-type~="action"]:not(.selectedUser) {
   transition: background-color 0.5s;
 }
-div.line.selectedUser[data-highlight="false"] {
+body div.line.selectedUser,
+body div.line.selectedUser[data-highlight="true"] {
   transition: background-color 0.5s;
   background-color: rgba(42, 161, 152, 0.25) !important;
 }
@@ -165,6 +166,7 @@ body div.line[data-line-type~="privmsg"] .message {
 body div.line[data-line-type~="privmsg"] .sender {
   white-space: pre-wrap;
 }
+/* Highlight based on stalkword matching */
 body div.line[data-highlight="true"] {
   font-weight: normal;
   border: 1px solid #B58900;

@@ -171,8 +171,10 @@ div.line[data-line-type~="privmsg"]:not(.selectedUser),
 div.line[data-line-type~="action"]:not(.selectedUser) {
   transition: background-color 0.5s;
 }
-div.line.selectedUser[data-highlight="false"] {
+body div.line.selectedUser,
+body div.line.selectedUser[data-highlight="true"] {
   transition: background-color 0.5s;
+  // FIXME: this really should be colored based on sender
   background-color: rgba(42, 161, 152, 0.25) !important;
 }
 
@@ -186,6 +188,7 @@ body div.line[data-line-type~="privmsg"] {
   }
 }
 
+/* Highlight based on stalkword matching */
 body div.line[data-highlight="true"] {
   font-weight:normal;
   border:1px solid @yellow;
