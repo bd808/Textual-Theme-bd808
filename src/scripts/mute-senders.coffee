@@ -21,6 +21,7 @@ MUTED = [
   'guest',
   'icinga-wm',
   'ircnotifier',
+  'jinxer-wm',
   'justberry',
   'krrrit-wm',
   'labs-morebots',
