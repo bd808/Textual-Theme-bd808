@@ -36,6 +36,7 @@ MUTED = [
   'pywikibugs',
   'services_bot',
   'shinken-wm',
+  'sirenbot',
   'slander',
   'snitch',
   'stashbot',
