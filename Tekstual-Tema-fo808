@@ -1,4 +1,4 @@
-Textual-Theme-bd808
+Textual-Theme-fo808
 ===================
 
 A theme for the [Textual] IRC client.
@@ -6,12 +6,12 @@ A theme for the [Textual] IRC client.
 Installation
 ------------
 
-    git clone https://github.com/bd808/Textual-Theme-bd808.git
-    cd Textual-Theme-bd808
+    git clone https://github.com/bd808/Textual-Theme-fo808.git
+    cd Textual-Theme-fo808
     make install
 
 In Textual, press `⌘,` to open the preferences. Click _Style_ then choose
-_bd808_ from the list.
+_fo808_ from the list.
 
 Compiling
 ---------
