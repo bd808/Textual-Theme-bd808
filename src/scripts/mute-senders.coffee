@@ -40,6 +40,7 @@ MUTED = [
   'slander',
   'snitch',
   'stashbot',
+  'stewardbot',
   'travis-ci',
   'wikibugs',
   'wikimediagithub',
