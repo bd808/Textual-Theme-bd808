@@ -50,6 +50,7 @@ MUTED = [
   'wm-labs-meetbot',
   'wmf-insecte',
   'wmf-selenium-bot',
+  'wmopbot',
   'zppix',
 ]
 
