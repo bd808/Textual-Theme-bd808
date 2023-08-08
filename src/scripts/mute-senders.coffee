@@ -29,6 +29,7 @@ MUTED = [
   'librenms-wmf',
   'mw-jenkinsbot',
   'nokib',
+  'opendevreview',
   'paladox',
   'phabot',
   'phawikibugs',
