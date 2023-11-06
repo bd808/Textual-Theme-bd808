@@ -22,6 +22,7 @@ MUTED = [
   'icinga-wm',
   'ircnotifier',
   'jinxer-wm',
+  'jinxer-wm-test',
   'justberry',
   'krrrit-wm',
   'labs-morebots',
