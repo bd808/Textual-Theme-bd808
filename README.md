@@ -18,7 +18,7 @@ Compiling
 The css and js files are built from less and CoffeeScript respectively. To
 recompile:
 
-    npm install -g coffee-script
+    npm install -g coffeescript
     npm install -g less
     make compile
 
